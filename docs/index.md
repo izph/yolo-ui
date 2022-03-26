@@ -1,7 +1,7 @@
 ---
 hero:
-  title: yolo-design
-  desc: yolo-design site example
+  title: Yolo-UI
+  desc: Yolo-UI site example
   actions:
     - text: Getting Started
       link: /components
@@ -18,4 +18,4 @@ features:
 footer: Open-source MIT Licensed | Copyright © 2020<br />Powered by [dumi](https://d.umijs.org)
 ---
 
-## Hello yolo-design!
+## Hello Yolo-UI

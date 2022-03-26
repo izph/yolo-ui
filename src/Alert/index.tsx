@@ -1,22 +1,23 @@
 import React from 'react';
 import propTypes from 'prop-types';
 
-import { AlertProps, KindMap } from './interface';
+import { AlertProps, TypeMap } from './interface';
+import './style';
 
-const prefixCls = 'happy-alert';
+const prefixClass = 'yolo-alert';
 
-const kinds: KindMap = {
+const types: TypeMap = {
   info: '#5352ED',
-  positive: '#2ED573',
-  negative: '#FF4757',
+  success: '#2ED573',
+  error: '#FF4757',
   warning: '#FFA502',
 };
 
-const Alert: React.FC<AlertProps> = ({ children, kind = 'info', ...rest }) => (
+const Alert: React.FC<AlertProps> = ({ children, type = 'info', ...rest }) => (
   <div
-    className={prefixCls}
+    className={prefixClass}
     style={{
-      background: kinds[kind],
+      background: types[type],
     }}
     {...rest}
   >
@@ -25,7 +26,7 @@ const Alert: React.FC<AlertProps> = ({ children, kind = 'info', ...rest }) => (
 );
 
 Alert.propTypes = {
-  kind: propTypes.oneOf(['info', 'positive', 'negative', 'warning']),
+  type: propTypes.oneOf(['info', 'success', 'error', 'warning']),
 };
 
 export default Alert;

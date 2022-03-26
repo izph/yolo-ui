@@ -1,6 +1,6 @@
 {
   "private": true,
-  "name": "yolo-design",
+  "name": "yolo-ui",
   "version": "1.0.0",
   "scripts": {
     "start": "dumi dev",
