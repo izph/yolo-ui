@@ -1,13 +1,19 @@
 {
   "compilerOptions": {
+    "baseUrl": "./",
     "target": "esnext",
     "module": "esnext",
     "moduleResolution": "node",
     "jsx": "react",
+    "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
     "types": ["jest"],
     "strict": true,
     "skipLibCheck": true,
-    "declaration": true
-  }
+    "declaration": true,
+    "declarationDir": "lib",
+    "resolveJsonModule": true
+  },
+  "include": ["components", "global.d.ts"],
+  "exclude": ["node_modules"]
 }
