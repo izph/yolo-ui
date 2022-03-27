@@ -1,5 +1,8 @@
 import { defineConfig } from 'dumi';
 
+// 按需引入babel-plugin-import
+
+// dumi配置文件
 export default defineConfig({
   title: 'Yolo-UI',
   favicon:
@@ -11,17 +14,18 @@ export default defineConfig({
   devServer: {
     port: 8888,
   },
-  extraBabelPlugins: [
-    [
-      'import',
-      {
-        libraryName: 'yolo-ui',
-        camel2DashComponentName: false,
-        customStyleName: (name) => {
-          return `./style/index.less`; // 注意：这里 ./ 不可省略
-        },
-      },
-      'yolo-ui',
-    ],
-  ],
+  // styles: [`./src/style/index.less`, `./src/style/base.less`, `./src/style/color.less`],
+  // extraBabelPlugins: [
+  //   [
+  //     'import',
+  //     {
+  //       libraryName: 'yolo-ui',
+  //       camel2DashComponentName: false,
+  //       customStyleName: (name) => {
+  //         return `./style/index.less`; // 注意：这里 ./ 不可省略
+  //       },
+  //     },
+  //     'yolo-ui',
+  //   ],
+  // ],
 });
