@@ -1,9 +1,8 @@
 ---
 title: Button 按钮
 nav:
-  #   title: 通用
+  title: 组件
   path: /components
-  order: 1
 group:
   title: 通用
   order: 1
@@ -26,12 +25,12 @@ import { Alert } from 'yolo-ui';
 
 export default () => {
   return (
-    <Fragment>
-      <Alert type="info">这是一条信息提示</Alert>
+    <>
+      <a>这是一条信息提示</a>
       <Alert type="success">这是一条成功提示</Alert>
       <Alert type="warning">这是一条警告提示</Alert>
       <Alert type="error">这是一条错误提示</Alert>
-    </Fragment>
+    </>
   );
 };
 ```

@@ -1,4 +1,4 @@
-# yolo-design
+# yolo-ui
 
 ## Getting Started
 

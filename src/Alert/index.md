@@ -1,9 +1,8 @@
 ---
 title: Alert 警告提示
 nav:
-  title: 反馈
+  title: 组件
   path: /components
-  order: 5
 group:
   title: 反馈
   order: 5
