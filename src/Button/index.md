@@ -10,26 +10,17 @@ group:
 
 # Button 按钮
 
-警告提示，展现需要关注的信息。
-
-## 何时使用
-
-- 当某个页面需要向用户显示警告的信息时。
-- 非浮层的静态展现形式，始终展现，不会自动消失，用户可以点击关闭。
-
 ## Demo
 
 ```tsx
-import React, { Fragment } from 'react';
-import { Alert } from 'yolo-ui';
+import React from 'react';
+import { Button } from 'yolo-ui';
 
 export default () => {
   return (
     <>
-      <a>这是一条信息提示</a>
-      <Alert type="success">这是一条成功提示</Alert>
-      <Alert type="warning">这是一条警告提示</Alert>
-      <Alert type="error">这是一条错误提示</Alert>
+      <Button>按钮</Button>
+      <Button type="primary">按钮</Button>
     </>
   );
 };
