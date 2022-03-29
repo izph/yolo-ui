@@ -1,0 +1,144 @@
+@import './mixins.less';
+@import '../../style/index.less';
+
+.yolo-btn {
+  position: relative;
+  display: inline-block;
+  color: @body-color;
+  font-weight: @btn-font-weight;
+  line-height: @btn-line-height;
+  white-space: nowrap;
+  text-align: center;
+  vertical-align: middle;
+  background-image: none;
+  border: @btn-border-width solid transparent;
+  box-shadow: @btn-box-shadow;
+  cursor: pointer;
+  transition: @btn-transition;
+  .button-size(@btn-padding-y, @btn-padding-x, @btn-font-size, @border-radius);
+  &.disabled,
+  &[disabled] {
+    box-shadow: none;
+    cursor: not-allowed;
+    opacity: @btn-disabled-opacity;
+    > * {
+      pointer-events: none;
+    }
+  }
+  //  按钮被点击时，去掉默认边框
+  &:focus {
+    outline: 0;
+  }
+}
+// type
+.yolo-btn-default {
+  .button-style(@white, @gray-400, @body-color, @white, @primary, @primary);
+}
+
+.yolo-btn-primary {
+  .button-style(@primary, @primary, @white);
+}
+
+.yolo-btn-info {
+  .button-style(@info, @info, @white);
+}
+
+.yolo-btn-warning {
+  .button-style(@warning, @warning, @white);
+}
+
+.yolo-btn-danger {
+  .button-style(@danger, @danger, @white);
+}
+
+.yolo-btn-text {
+  .button-style(transparent, transparent, @body-color);
+  box-shadow: none;
+}
+
+.yolo-btn-dashed {
+  .button-style(@white, @gray-400, @body-color, @white, @primary, @primary);
+  border-style: dotted;
+}
+
+.yolo-btn-link {
+  color: @btn-link-color;
+  font-weight: @font-weight-normal;
+  text-decoration: @link-decoration;
+  background-color: transparent;
+  box-shadow: none;
+  &:hover {
+    color: @btn-link-hover-color;
+    text-decoration: @link-hover-decoration;
+  }
+  &:focus,
+  &.focus {
+    text-decoration: @link-hover-decoration;
+    box-shadow: none;
+  }
+  &:disabled,
+  &.disabled {
+    color: @btn-link-disabled-color;
+    pointer-events: none;
+  }
+}
+
+// size
+.yolo-btn-lg {
+  .button-size(
+    @btn-padding-y-lg,
+    @btn-padding-x-lg,
+    @btn-font-size-lg,
+    @btn-border-radius-lg
+  );
+}
+
+.yolo-btn-md {
+  .button-size(
+    @btn-padding-y-md,
+    @btn-padding-x-md,
+    @btn-font-size-md,
+    @btn-border-radius-md
+  );
+}
+
+.yolo-btn-sm {
+  .button-size(
+    @btn-padding-y-sm,
+    @btn-padding-x-sm,
+    @btn-font-size-sm,
+    @btn-border-radius-sm
+  );
+}
+
+// shape
+.yolo-btn-circle {
+  min-width: 32px;
+  padding-right: 0;
+  padding-left: 0;
+  text-align: center;
+  border-radius: 50%;
+}
+
+.yolo-btn-round {
+  border-radius: 30%;
+}
+
+// block
+.yolo-btn-block {
+  width: 100%;
+}
+
+// icon
+// .yolo-btn-icon-only {
+//   width: 32px;
+//   height: 32px;
+//   padding: 2.4px 0;
+//   font-size: 16px;
+//   border-radius: 2px;
+// }
+
+// .yolo-btn > .anticon + span,
+// .yolo-btn > span + .anticon {
+//   margin-left: 8px;
+// }

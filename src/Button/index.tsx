@@ -9,7 +9,7 @@ const Button: React.FC<ButtonProps> = (props) => {
 
   // yolo-btn yolo-btn-lg yolo-btn-primary
   // 因为我们的key是变化的，所有用[`${ }`]
-  const classes = classNames('yolo-btn', {
+  const classes = classNames('btn', 'yolo-btn', {
     [`yolo-btn-${type}`]: type,
     [`yolo-btn-${size}`]: size,
     disabled: type === 'link' && disabled,

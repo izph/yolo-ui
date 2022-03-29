@@ -21,6 +21,7 @@ export default () => {
     <>
       <Button>按钮</Button>
       <Button type="primary">按钮</Button>
+      <Button type="link">按钮</Button>
     </>
   );
 };
