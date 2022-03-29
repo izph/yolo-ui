@@ -403,11 +403,11 @@ button,
 [type="submit"] {
   -webkit-appearance: button; // 2
 
-  @if @enable-pointer-cursor-for-buttons {
-    &:not(:disabled) {
-      cursor: pointer; // 3
-    }
-  }
+  //   when @enable-pointer-cursor-for-buttons {
+  //     &:not(:disabled) {
+  //       cursor: pointer; // 3
+  //     }
+  //   }
 }
 
 // Remove inner border and padding from Firefox, but don't restore the outline like Normalize.
