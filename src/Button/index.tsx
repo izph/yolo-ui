@@ -5,11 +5,12 @@ import { ButtonProps } from './interface';
 import './style/index';
 
 const Button: React.FC<ButtonProps> = (props) => {
-  const { type, disabled, size, children, href, ...restProps } = props;
+  // className用户自定义的
+  const { type, className, disabled, size, children, href, ...restProps } = props;
 
   // yolo-btn yolo-btn-lg yolo-btn-primary
   // 因为我们的key是变化的，所有用[`${ }`]
-  const classes = classNames('btn', 'yolo-btn', {
+  const classes = classNames('yolo-btn', className, {
     [`yolo-btn-${type}`]: type,
     [`yolo-btn-${size}`]: size,
     disabled: type === 'link' && disabled,

@@ -10,7 +10,11 @@ group:
 
 # Button 按钮
 
-## Demo
+## 按钮的类型
+
+按钮分为七种类型`type`，默认是`default`。
+
+`default` | `primary` | `info` | `warning` | `danger` | `dashed` | `link`
 
 ```tsx
 import React from 'react';
@@ -18,11 +22,17 @@ import { Button } from 'yolo-ui';
 
 export default () => {
   return (
-    <>
-      <Button>按钮</Button>
-      <Button type="primary">按钮</Button>
-      <Button type="link">按钮</Button>
-    </>
+    <div id="button-demo-display-type">
+      <Button type="default">默认按钮</Button>
+      <Button type="primary">主按钮</Button>
+      <Button type="info">信息按钮</Button>
+      <Button type="danger">危险按钮</Button>
+      <Button type="warning">警告按钮</Button>
+      <Button type="dashed">虚线按钮</Button>
+      <Button type="link" href="https://github.com/izph">
+        链接按钮
+      </Button>
+    </div>
   );
 };
 ```

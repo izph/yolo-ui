@@ -1,27 +1,33 @@
-@import './mixins.less';
 @import '../../style/index.less';
+@import './mixins.less';
 
 .yolo-btn {
+  /* 按钮的基本样式——————开始*/
   position: relative;
-  display: inline-block;
-  color: @body-color;
+  display: inline-block; // 行内块
+  color: @body-color; // 默认是 body-color
   font-weight: @btn-font-weight;
   line-height: @btn-line-height;
-  white-space: nowrap;
-  text-align: center;
-  vertical-align: middle;
+  white-space: nowrap; // 不换行
+  text-align: center; // 文字水平居中
+  vertical-align: middle; // 文字垂直居中
   background-image: none;
   border: @btn-border-width solid transparent;
   box-shadow: @btn-box-shadow;
   cursor: pointer;
   transition: @btn-transition;
+  //控制按钮变化的样式 padding、font-size、border-radius
   .button-size(@btn-padding-y, @btn-padding-x, @btn-font-size, @border-radius);
+  /* 按钮的基本样式——————结束*/
+
+  // 有disabled属性，禁止的样式
   &.disabled,
   &[disabled] {
     box-shadow: none;
     cursor: not-allowed;
     opacity: @btn-disabled-opacity;
     > * {
+      // 用通配符，使得所有的子元素不接受的  鼠标事件
       pointer-events: none;
     }
   }
@@ -30,6 +36,15 @@
     outline: 0;
   }
 }
+// .button-style(
+//     @background,
+//     @border,
+//     @color,
+//     @hover-background: lighten(@background, 7.5%),
+//     @hover-border: lighten(@border, 10%),
+//     @hover-color: @color
+// )
+
 // type
 .yolo-btn-default {
   .button-style(@white, @gray-400, @body-color, @white, @primary, @primary);
@@ -61,6 +76,7 @@
   border-style: dotted;
 }
 
+// 特例
 .yolo-btn-link {
   color: @btn-link-color;
   font-weight: @font-weight-normal;
@@ -83,7 +99,7 @@
   }
 }
 
-// size
+// button的size  lg
 .yolo-btn-lg {
   .button-size(
     @btn-padding-y-lg,
@@ -92,7 +108,7 @@
     @btn-border-radius-lg
   );
 }
-
+// button的size  md 中等
 .yolo-btn-md {
   .button-size(
     @btn-padding-y-md,
@@ -102,6 +118,7 @@
   );
 }
 
+// button的size  sm 小
 .yolo-btn-sm {
   .button-size(
     @btn-padding-y-sm,

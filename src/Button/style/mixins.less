@@ -1,15 +1,19 @@
+// 控制不同的button-size
 .button-size(@padding-y, @padding-x, @font-size, @border-radius) {
   padding: @padding-y @padding-x;
   font-size: @font-size;
   border-radius: @border-radius;
 }
 
+// 控制不同的button-type  颜色
 .button-style(
     @background,
     @border,
     @color,
+    // Less Lighten 变化颜色亮度   0-100%
     @hover-background: lighten(@background, 7.5%),
     @hover-border: lighten(@border, 10%),
+    // 字体颜色不变
     @hover-color: @color
   ) {
   color: @color;
@@ -34,7 +38,7 @@
   }
 }
 
-[id^='components-button-demo-'] .yolo-btn {
+[id^='button-demo-display-'] .yolo-btn {
   margin-right: 8px;
   margin-bottom: 12px;
 }
