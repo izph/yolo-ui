@@ -89,10 +89,10 @@ export default () => {
 
 通过设置 `Button` 的属性来产生不同的按钮样式，推荐顺序为：`type` > `size` -> `disabled`。按钮的属性说明如下：
 
-|   属性   |                         说明                          |      类型       |  默认值   |
-| :------: | :---------------------------------------------------: | :-------------: | :-------: | ------------ | --------- | -------- | -------- | -------------- | --------- |
-|   type   |                     设置按钮类型                      |    `default`    | `primary` | `info`       | `warning` | `danger` | `dashed` | `link`，非必填 | `default` |
-|   size   |                     设置按钮大小                      |      `lg`       |   `md`    | `sm`，非必填 | `md`      |
-| disabled |                     按钮禁用状态                      |     boolean     |  `false`  |
-|   href   | 点击跳转的地址，指定此属性 button 的行为和 a 链接一致 |     string      |     -     |
-| onClick  |                   点击按钮时的回调                    | (event) => void |     -     |
+| 属性 | 说明 | 类型 | 默认值 |
+| :-: | :-: | :-: | :-: |
+| type | 设置按钮类型 | `default`、`primary`、`info`、 `warning`、`danger`、`dashed`、`link`，非必填 | `default` |
+| size | 设置按钮大小 | `lg`、`md`、`sm`，非必填 | `md` |
+| disabled | 按钮禁用状态 | boolean | `false` |
+| href | 点击跳转的地址，指定此属性 button 的行为和 a 链接一致 | string | - |
+| onClick | 点击按钮时的回调 | (event) => void | - |

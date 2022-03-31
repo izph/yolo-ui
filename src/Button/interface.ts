@@ -10,8 +10,8 @@
 //     Link = 'link',
 // }
 
-export type ButtonSize = 'lg' | 'sm';
-export type ButtonType = 'primary' | 'default' | 'danger' | 'link';
+export type ButtonSize = 'lg' | 'md' | 'sm';
+export type ButtonType = 'primary' | 'default' | 'danger' | 'link' | 'info' | 'dashed' | 'warning';
 export type ButtonHTMLTypes = 'submit' | 'button' | 'reset';
 export interface BaseButtonProps {
   className?: string;
