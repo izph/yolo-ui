@@ -10,29 +10,23 @@ group:
 
 # Menu 导航菜单
 
-## 按钮的类型
-
-按钮分为七种类型`type`，默认是`default`。
-
-`default` | `primary` | `info` | `warning` | `danger` | `dashed` | `link`
+水平的顶部导航菜单。`mode`值为`horizontal`。
 
 ```tsx
 import React from 'react';
-import { Button } from 'yolo-ui';
+import { Menu } from 'yolo-ui';
 
 export default () => {
+  const onClick = (index: string) => {
+    console.log('click: ', index);
+  };
   return (
-    <div id="button-demo-display-type">
-      <Button type="default">默认按钮</Button>
-      <Button type="primary">主按钮</Button>
-      <Button type="info">信息按钮</Button>
-      <Button type="danger">危险按钮</Button>
-      <Button type="warning">警告按钮</Button>
-      <Button type="dashed">虚线按钮</Button>
-      <Button type="link" href="https://github.com/izph">
-        链接按钮
-      </Button>
-    </div>
+    <Menu onSelect={onClick}>
+      <Menu.Item>菜单1</Menu.Item>
+      <Menu.Item>菜单2</Menu.Item>
+      <Menu.Item>菜单3</Menu.Item>
+      <Menu.Item>菜单4</Menu.Item>
+    </Menu>
   );
 };
 ```
