@@ -1,9 +1,5 @@
 import { createContext } from 'react';
-import { SelectCallback } from './interface';
-export interface MenuContextProps {
-  index: number;
-  onSelect?: SelectCallback;
-}
+import { MenuContextProps } from './interface';
 
 const MenuContext = createContext<MenuContextProps>({
   index: 0,

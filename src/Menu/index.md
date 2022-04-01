@@ -17,15 +17,18 @@ import React from 'react';
 import { Menu } from 'yolo-ui';
 
 export default () => {
-  const onClick = (index: string) => {
-    console.log('click: ', index);
-  };
   return (
-    <Menu onSelect={onClick}>
-      <Menu.Item>菜单1</Menu.Item>
-      <Menu.Item>菜单2</Menu.Item>
-      <Menu.Item>菜单3</Menu.Item>
-      <Menu.Item>菜单4</Menu.Item>
+    <Menu
+      onSelect={(index) => {
+        console.log(index);
+      }}
+    >
+      <Menu.Item index={0} disabled>
+        菜单1
+      </Menu.Item>
+      <Menu.Item index={1}>菜单2</Menu.Item>
+      <Menu.Item index={2}>菜单3</Menu.Item>
+      <Menu.Item index={3}>菜单4</Menu.Item>
     </Menu>
   );
 };

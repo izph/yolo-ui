@@ -1,5 +1,5 @@
 // React.CSSProperties -> style
-
+import { FC } from 'react';
 type MenuMode = 'vertical' | 'horizontal';
 export type SelectCallback = (selectedIndex: number) => void;
 export interface MenuProps {
@@ -8,6 +8,7 @@ export interface MenuProps {
   mode?: MenuMode;
   style?: React.CSSProperties;
   onSelect?: SelectCallback;
+  Item: FC<MenuItemProps>;
 }
 
 export interface MenuItemProps {
@@ -15,4 +16,9 @@ export interface MenuItemProps {
   disabled?: boolean;
   className?: string;
   style?: React.CSSProperties;
+}
+
+export interface MenuContextProps {
+  index: number;
+  onSelect?: SelectCallback;
 }

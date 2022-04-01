@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import classNames from 'classnames';
 import { MenuItemProps } from './interface';
 import MenuContext from './MenuContext';
+
 const MenuItem: React.FC<MenuItemProps> = (props) => {
   const { className, index, style, children, disabled } = props;
   const menuItemContext = useContext(MenuContext);
