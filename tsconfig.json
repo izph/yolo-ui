@@ -1,19 +1,16 @@
 {
   "compilerOptions": {
-    "baseUrl": "./",
-    "target": "esnext",
-    "module": "esnext",
-    "moduleResolution": "node",
+    "target": "ES2019",
+    "module": "ESNext",
+    "moduleResolution": "Node",
+    "importHelpers": true,
+    "strictNullChecks": true,
     "jsx": "react",
-    "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
-    "types": ["jest"],
+    "sourceMap": true,
+    "baseUrl": "./",
     "strict": true,
-    "skipLibCheck": true,
-    "declaration": true,
-    "declarationDir": "lib",
-    "resolveJsonModule": true
+    "allowSyntheticDefaultImports": true
   },
-  "include": ["components", "global.d.ts"],
-  "exclude": ["node_modules"]
+  "exclude": ["node_modules", "dist", "typings"]
 }

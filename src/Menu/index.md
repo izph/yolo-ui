@@ -16,19 +16,27 @@ group:
 import React from 'react';
 import { Menu } from 'yolo-ui';
 
+const { SubMenu } = Menu;
+
+// <SubMenu title="菜单4">
+//         <Menu.Item>菜单4-1</Menu.Item>
+//         <Menu.Item>菜单4-2</Menu.Item>
+//         <Menu.Item>菜单4-3</Menu.Item>
+//       </SubMenu>
 export default () => {
   return (
     <Menu
-      onSelect={(index) => {
+      onClick={(index) => {
         console.log(index);
       }}
+
+      // mode="vertical"
+      // defaultOpenKeys={['3']}
     >
-      <Menu.Item index={0} disabled>
-        菜单1
-      </Menu.Item>
-      <Menu.Item index={1}>菜单2</Menu.Item>
-      <Menu.Item index={2}>菜单3</Menu.Item>
-      <Menu.Item index={3}>菜单4</Menu.Item>
+      <Menu.Item>菜单1</Menu.Item>
+      <Menu.Item>菜单2</Menu.Item>
+      <Menu.Item>菜单3</Menu.Item>
+      <Menu.Item>菜单4</Menu.Item>
     </Menu>
   );
 };

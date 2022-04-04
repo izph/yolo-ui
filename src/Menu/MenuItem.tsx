@@ -1,10 +1,17 @@
-import React, { useContext } from 'react';
+import React, { FC, useContext, CSSProperties } from 'react';
 import classNames from 'classnames';
-import { MenuItemProps } from './interface';
+// import { MenuItemProps } from './interface';
 import MenuContext from './MenuContext';
 
-const MenuItem: React.FC<MenuItemProps> = (props) => {
-  const { className, index, style, children, disabled } = props;
+export interface MenuItemProps {
+  index?: string;
+  disabled?: boolean;
+  className?: string;
+  style?: CSSProperties;
+}
+
+const MenuItem: FC<MenuItemProps> = ({ className, index, style, children, disabled }) => {
+  // const { className, index, style, children, disabled } = props;
   const menuItemContext = useContext(MenuContext);
   const classes = classNames('yolo-menu-item', className, {
     'is-disabled': disabled,
@@ -13,7 +20,7 @@ const MenuItem: React.FC<MenuItemProps> = (props) => {
 
   const handleClick = () => {
     const { index, onSelect } = menuItemContext;
-    if (onSelect && !disabled) {
+    if (onSelect && !disabled && typeof index === 'string') {
       onSelect(index);
     }
   };
@@ -24,5 +31,7 @@ const MenuItem: React.FC<MenuItemProps> = (props) => {
     </li>
   );
 };
+
+MenuItem.displayName = 'MenuItem';
 
 export default MenuItem;
