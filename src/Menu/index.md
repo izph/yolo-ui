@@ -10,26 +10,20 @@ group:
 
 # Menu 导航菜单
 
+## 水平菜单
+
 水平的顶部导航菜单。`mode`值为`horizontal`。
 
 ```tsx
 import React from 'react';
 import { Menu } from 'yolo-ui';
 
-const { SubMenu } = Menu;
-
-// <SubMenu title="菜单4">
-//         <Menu.Item>菜单4-1</Menu.Item>
-//         <Menu.Item>菜单4-2</Menu.Item>
-//         <Menu.Item>菜单4-3</Menu.Item>
-//       </SubMenu>
 export default () => {
   return (
     <Menu
       onClick={(index) => {
         console.log(index);
       }}
-
       // mode="vertical"
       // defaultOpenKeys={['3']}
     >
@@ -42,62 +36,71 @@ export default () => {
 };
 ```
 
-## 按钮尺寸
+## 垂直菜单
 
-尺寸`size`分为大、中、小，默认尺寸是中。 `lg` | `md` | `sm`
+垂直菜单，子菜单内嵌在菜单区域。`mode`值为`vertical`。
 
 ```tsx
 import React from 'react';
-import { Button } from 'yolo-ui';
-
-export default () => {
-  return (
-    <div id="button-demo-display-size">
-      <Button size="lg" type="primary">
-        Large
-      </Button>
-      <Button size="md" type="danger">
-        Medium
-      </Button>
-      <Button size="sm" type="warning">
-        Small
-      </Button>
-    </div>
-  );
-};
+import { Menu } from 'yolo-ui';
+export default () => (
+  <Menu mode="vertical">
+    <Menu.Item>菜单1</Menu.Item>
+    <Menu.Item>菜单2</Menu.Item>
+    <Menu.Item>菜单3</Menu.Item>
+    <Menu.Item>菜单4</Menu.Item>
+  </Menu>
+);
 ```
 
-## 按钮的禁用状态
+## 展开子菜单
 
-添加`disabled`属性即可让按钮处于禁用状态，同时按钮样式也会改变。
+通过`defaultOpenKeys`设置当前展开的 `SubMenu` 菜单项 `key` 数组
+
+点击菜单，收起其他展开的所有菜单，保持菜单聚焦简洁。
 
 ```tsx
 import React from 'react';
-import { Button } from 'yolo-ui';
+import { Menu } from 'yolo-ui';
 
-export default () => {
-  return (
-    <div id="button-demo-display-size">
-      <Button type="primary" disabled>
-        主按钮
-      </Button>
-      <Button disabled>默认按钮</Button>
-      <Button type="link" disabled>
-        链接按钮
-      </Button>
-    </div>
-  );
-};
+const { SubMenu } = Menu;
+
+export default () => (
+  <Menu mode="vertical" defaultIndex="1-0" defaultOpenKeys={['1']}>
+    <Menu.Item>菜单1</Menu.Item>
+    <SubMenu title="菜单2">
+      <Menu.Item>菜单2-1</Menu.Item>
+      <Menu.Item>菜单2-2</Menu.Item>
+    </SubMenu>
+    <Menu.Item>菜单3</Menu.Item>
+    <Menu.Item>菜单4</Menu.Item>
+  </Menu>
+);
 ```
 
 ## API
 
-通过设置 `Button` 的属性来产生不同的按钮样式，推荐顺序为：`type` > `size` -> `disabled`。按钮的属性说明如下：
+### Menu
 
-| 属性 | 说明 | 类型 | 默认值 |
+| 参数 | 说明 | 类型 | 默认值 |
 | :-: | :-: | :-: | :-: |
-| type | 设置按钮类型 | `default`、`primary`、`info`、 `warning`、`danger`、`dashed`、`link`，非必填 | `default` |
-| size | 设置按钮大小 | `lg`、`md`、`sm`，非必填 | `md` |
-| disabled | 按钮禁用状态 | boolean | `false` |
-| href | 点击跳转的地址，指定此属性 button 的行为和 a 链接一致 | string | - |
-| onClick | 点击按钮时的回调 | (event) => void | - |
+| defaultOpenKeys | 初始展开的 `SubMenu` 菜单项 key 数组 | `string[]` | - |
+| defaultIndex | 初始选中的菜单项 key 数组 | `string` | - |
+| mode | 菜单类型，现在支持水平、和内嵌模式三种 | `horizontal`、`vertical` | `horizontal` |
+| style | 根节点样式 | `CSSProperties` | - |
+| onClick | 点击 MenuItem 调用此函数 | `function({ item, key, keyPath, domEvent })` | - |
+
+### Menu.Item
+
+|   参数   |      说明       |   类型    | 默认值 |
+| :------: | :-------------: | :-------: | :----: |
+| disabled |    是否禁用     | `boolean` | false  |
+|  index   | item 的唯一标志 | `string`  |   -    |
+
+### Menu.SubMenu
+
+|   参数   |      说明      |             类型              | 默认值 |
+| :------: | :------------: | :---------------------------: | :----: |
+| children | 子菜单的菜单项 | Array&lt;MenuItem \| SubMenu> |   -    |
+|  index   |    唯一标志    |           `string`            |   -    |
+|  title   |   子菜单项值   |          `ReactNode`          |   -    |
