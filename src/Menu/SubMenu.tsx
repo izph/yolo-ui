@@ -4,8 +4,7 @@ import classNames from 'classnames';
 import { MenuItemProps } from './MenuItem';
 import MenuContext from './MenuContext';
 import Icon from '../Icon/index';
-
-import { CSSTransition } from 'react-transition-group';
+import Transition from '../Transition/index';
 
 export interface SubMenuProps {
   index?: string;
@@ -65,9 +64,9 @@ const SubMenu: React.FC<SubMenuProps> = (props) => {
       console.error('Warning: SubMenu has a child which is not a MenuItem component');
     });
     return (
-      <CSSTransition in={menuOpen} timeout={300} className="zoom-in-top" appear>
+      <Transition in={menuOpen} timeout={300} animation="zoom-in-top">
         <ul className={subMenuClasses}>{childrenComponent}</ul>
-      </CSSTransition>
+      </Transition>
     );
   };
 
