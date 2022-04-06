@@ -1,19 +1,13 @@
-import React, {
-  FC,
-  ReactElement,
-  KeyboardEvent,
-  ChangeEvent,
-  useState,
-  useEffect,
-  useRef,
-} from 'react';
+import React, { FC, KeyboardEvent, ChangeEvent, useState, useEffect, useRef } from 'react';
 import classNames from 'classnames';
 import { LoadingOutlined } from '@ant-design/icons';
-import Transition from '../transition';
+import Transition from '../Transition/index';
 import Input from '../Input/index';
 import { AutoCompleteProps, DataSourceType } from './interface';
 import useDebounce from '../hooks/useDebounce';
 import useClickOutside from '../hooks/useClickOutside';
+
+import './style/index';
 
 const AutoComplete: FC<AutoCompleteProps> = ({
   value = '',
@@ -22,9 +16,11 @@ const AutoComplete: FC<AutoCompleteProps> = ({
   renderOption,
   ...restProps
 }) => {
+  // 用户输入的value
   const [inputValue, setInputValue] = useState(value as string);
   const [showDropdown, setShowDropdown] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  // 数据
   const [options, setOptions] = useState<DataSourceType[]>([]);
   const [highlightIndex, setHighlightIndex] = useState(-1);
   const triggerSearch = useRef(false);
@@ -63,12 +59,13 @@ const AutoComplete: FC<AutoCompleteProps> = ({
   }, [debouncedValue, onSearch]);
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    const newValue = e.target.value.trim();
+    const newValue = e.target.value.trim(); // 去掉空格
     setInputValue(newValue);
     triggerSearch.current = true;
   };
-
+  // 点击item触发
   const handleSelect = (item: DataSourceType) => {
+    // 把item填充，清空下拉菜单
     setInputValue(item.value);
     setShowDropdown(false);
     if (onSelect) {
@@ -113,9 +110,11 @@ const AutoComplete: FC<AutoCompleteProps> = ({
         break;
     }
   };
+
+  //
   const generateDropdown = () => (
     <Transition in={showDropdown || isLoading} animation="zoom-in-top" timeout={300}>
-      <ul className="mk-suggestion-list">
+      <ul className="yolo-suggestion-list">
         {isLoading && (
           <div className="suggestion-loading-icon">
             <LoadingOutlined />
@@ -137,7 +136,7 @@ const AutoComplete: FC<AutoCompleteProps> = ({
   );
 
   return (
-    <div className="mk-auto-complete" ref={dropdownRef}>
+    <div className="yolo-auto-complete" ref={dropdownRef}>
       <Input value={inputValue} onChange={handleChange} onKeyDown={handleKeyDown} {...restProps} />
       {generateDropdown()}
     </div>
