@@ -19,12 +19,17 @@ const AutoComplete: FC<AutoCompleteProps> = ({
   // 用户输入的value
   const [inputValue, setInputValue] = useState(value as string);
   const [showDropdown, setShowDropdown] = useState(false);
+  // 数据加载时的状态
   const [isLoading, setIsLoading] = useState(false);
   // 数据
   const [options, setOptions] = useState<DataSourceType[]>([]);
+  // 高亮
   const [highlightIndex, setHighlightIndex] = useState(-1);
+  // 记录状态，handleChange设为true状态，handleSelect为false
   const triggerSearch = useRef(false);
+  // 和DOM打交道，
   const dropdownRef = useRef<HTMLDivElement>(null);
+  // 对用户输入的内容，用防抖
   const debouncedValue = useDebounce(inputValue, 300);
 
   // 当点击到AutoComplete组件外的区域，会自动关闭下拉框选项部分
@@ -85,8 +90,9 @@ const AutoComplete: FC<AutoCompleteProps> = ({
     }
     setHighlightIndex(currentIndex);
   };
-
+  // 按键
   const handleKeyDown = (e: KeyboardEvent<HTMLInputElement>) => {
+    // e.code 13回车/38向上/40向下/27ESC键
     switch (e.key) {
       // 回车
       case 'Enter':
