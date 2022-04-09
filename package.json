@@ -33,6 +33,7 @@
     "@fortawesome/react-fontawesome": "^0.1.18",
     "@types/classnames": "^2.3.1",
     "@types/react-transition-group": "^4.4.4",
+    "axios": "^0.26.1",
     "classnames": "^2.3.1",
     "prop-types": "^15.8.1",
     "react": "^17.0.2",
