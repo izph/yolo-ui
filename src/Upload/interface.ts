@@ -18,12 +18,12 @@ export interface UploadFile {
   error?: any;
 }
 export interface UploadProps {
-  action: string;
+  action: string; // 把文件发送到哪个接口，必填
   defaultFileList?: UploadFile[];
   beforeUpload?: (file: File) => boolean | Promise<File>;
-  onProgress?: (percentage: number, file: File) => void;
-  onSuccess?: (data: any, file: File) => void;
-  onError?: (err: any, file: File) => void;
+  onProgress?: (percentage: number, file: File) => void; // 百分比，file
+  onSuccess?: (data: any, file: File) => void; // 服务器返回的data
+  onError?: (err: any, file: File) => void; // 服务器返回的err
   onChange?: (file: File) => void;
   onRemove?: (file: UploadFile) => void;
   headers?: { [key: string]: any };

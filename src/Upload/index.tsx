@@ -3,7 +3,7 @@ import axios from 'axios';
 import UploadList from './uploadList';
 import Dragger from './dragger';
 import { UploadProps, UploadFile } from './interface';
-
+import './style/index';
 export const Upload: FC<UploadProps> = (props) => {
   const {
     action,
@@ -38,9 +38,11 @@ export const Upload: FC<UploadProps> = (props) => {
   };
   const handleClick = () => {
     if (fileInput.current) {
+      // 手动触发input文件的点击事件
       fileInput.current.click();
     }
   };
+  // 文件上传
   const handleFileChange = (e: ChangeEvent<HTMLInputElement>) => {
     const files = e.target.files;
     if (!files) {
@@ -62,6 +64,7 @@ export const Upload: FC<UploadProps> = (props) => {
   const uploadFiles = (files: FileList) => {
     let postFiles = Array.from(files);
     postFiles.forEach((file) => {
+      // 没有beforeUpload，直接上传
       if (!beforeUpload) {
         post(file);
       } else {
@@ -103,6 +106,7 @@ export const Upload: FC<UploadProps> = (props) => {
           'Content-Type': 'multipart/form-data',
         },
         withCredentials,
+        // axios内置的显示进度的方法
         onUploadProgress: (e) => {
           let percentage = Math.round((e.loaded * 100) / e.total) || 0;
           if (percentage < 100) {
@@ -134,12 +138,8 @@ export const Upload: FC<UploadProps> = (props) => {
   };
 
   return (
-    <div className="viking-upload-component">
-      <div
-        className="viking-upload-input"
-        style={{ display: 'inline-block' }}
-        onClick={handleClick}
-      >
+    <div className="yolo-upload-component">
+      <div className="yolo-upload-input" style={{ display: 'inline-block' }} onClick={handleClick}>
         {drag ? (
           <Dragger
             onFile={(files) => {
@@ -152,7 +152,7 @@ export const Upload: FC<UploadProps> = (props) => {
           children
         )}
         <input
-          className="viking-file-input"
+          className="yolo-file-input"
           style={{ display: 'none' }}
           ref={fileInput}
           onChange={handleFileChange}
