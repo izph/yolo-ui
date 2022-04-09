@@ -3,6 +3,7 @@ import React, { FC } from 'react';
 import Icon from '../Icon/index';
 import Progress from '../Progress/index';
 import { UploadListProps } from './interface';
+import './style/index';
 
 export const UploadList: FC<UploadListProps> = (props) => {
   const { fileList, onRemove } = props;

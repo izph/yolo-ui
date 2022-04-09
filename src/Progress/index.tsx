@@ -6,6 +6,7 @@ const Progress: FC<ProgressProps> = (props) => {
   const { percent, strokeHeight, showText, styles, theme } = props;
   return (
     <div className="yolo-progress-bar" style={styles}>
+      {/* 灰色最外层 */}
       <div className="yolo-progress-bar-outer" style={{ height: `${strokeHeight}px` }}>
         <div className={`yolo-progress-bar-inner color-${theme}`} style={{ width: `${percent}%` }}>
           {showText && <span className="inner-text">{`${percent}%`}</span>}

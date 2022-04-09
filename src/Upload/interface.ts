@@ -1,21 +1,20 @@
 import React from 'react';
 
+// 准备上传、正在上传、上传成功、上传失败
+export type UploadFileStatus = 'ready' | 'uploading' | 'success' | 'error';
+export interface UploadFile {
+  uid: string;
+  size: number; // 大小，原生
+  name: string; // 名字，原生
+  status?: UploadFileStatus; // 状态
+  percent?: number; // 上传进度，百分比
+  raw?: File; // 原生文件信息
+  response?: any; // 成功信息
+  error?: any; // 失败信息
+}
 export interface UploadListProps {
   fileList: UploadFile[];
   onRemove: (_file: UploadFile) => void;
-}
-
-export type UploadFileStatus = 'ready' | 'uploading' | 'success' | 'error';
-
-export interface UploadFile {
-  uid: string;
-  size: number;
-  name: string;
-  status?: UploadFileStatus;
-  percent?: number;
-  raw?: File;
-  response?: any;
-  error?: any;
 }
 export interface UploadProps {
   action: string; // 把文件发送到哪个接口，必填

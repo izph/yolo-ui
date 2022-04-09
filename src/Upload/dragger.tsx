@@ -1,6 +1,7 @@
 import React, { FC, useState, DragEvent } from 'react';
 import classNames from 'classnames';
 
+import './style/index';
 interface DraggerProps {
   onFile: (files: FileList) => void;
 }

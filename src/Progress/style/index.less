@@ -1,37 +1,41 @@
 @import '../../style/index.less';
 
 .yolo-progress-bar {
-    width: 100%;
-    box-sizing: border-box;
-    .yolo-progress-bar-outer {
-      border-radius: @progress-border-radius;
-      background-color: @progress-bg;
-      overflow: hidden;
-      position: relative;
+  width: 100%;
+  box-sizing: border-box;
+
+  .yolo-progress-bar-outer {
+    border-radius: @progress-border-radius;
+    background-color: @progress-bg;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .yolo-progress-bar-inner {
+    position: absolute;
+    left: 0;
+    top: 0;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    height: 100%;
+    border-radius: @progress-border-radius;
+    line-height: 1;
+    transition: @progress-bar-transition;
+
+    .inner-text {
+      color: @progress-bar-color;
+      font-size: @progress-font-size;
+      margin: 0 5px;
     }
-    .yolo-progress-bar-inner {
-      position: absolute;
-      left: 0;
-      top: 0;
-      display: flex;
-      justify-content: flex-end;
-      align-items: center;
-      height: 100%;
-      border-radius: @progress-border-radius;
-      line-height: 1;
-      transition: @progress-bar-transition;
-      .inner-text {
-        color: @progress-bar-color;
-        font-size: @progress-font-size;
-        margin: 0 5px;  
+  }
+
+  each(@theme-colors,
+      {
+      .color-@{key} {
+        background-color: @value;
       }
     }
-    each(@theme-colors,
-        {
-        .color-@{key} {
-            background-color: @value;
-        }
-    }
 
-    )
+  )
 }
