@@ -1,0 +1,58 @@
+@import '../../style/index.less';
+
+.yolo-tabs-nav {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 0;
+    padding-left: 0;
+    list-style: none;
+    border-bottom: @nav-tabs-border-width solid @nav-tabs-border-color;
+}
+
+.yolo-tabs-nav-item {
+    display: block;
+    padding: @nav-link-padding-y @nav-link-padding-x;
+    cursor: pointer;
+
+    &:hover,
+    &:focus {
+        color: @nav-tabs-link-hover-color;
+    }
+
+    &.disabled {
+        color: @nav-link-disabled-color;
+        background-color: transparent;
+        border-color: transparent;
+        cursor: default;
+        pointer-events: none;
+    }
+
+    &.is-active {
+        color: @nav-tabs-link-active-color;
+    }
+}
+
+.nav-line {
+    .yolo-tabs-nav-item {
+        &.is-active {
+            border-bottom: @nav-tabs-border-width * 2 solid @nav-tabs-link-active-color;
+        }
+    }
+}
+
+.nav-card {
+    .yolo-tabs-nav-item {
+        margin-bottom: -@nav-tabs-border-width;
+        border: @nav-tabs-border-width solid transparent;
+
+        &.is-active {
+            .border-top-radius(@nav-tabs-border-radius);
+            background-color: @nav-tabs-link-active-bg;
+            border-color: @nav-tabs-link-active-border-color;
+        }
+    }
+}
+
+.yolo-tabs-content {
+    margin-top: @nav-tabs-content-margin;
+}

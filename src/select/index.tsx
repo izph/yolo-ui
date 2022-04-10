@@ -2,7 +2,6 @@ import React, {
   FC,
   useState,
   ChangeEvent,
-  createContext,
   useRef,
   FunctionComponentElement,
   useEffect,
@@ -13,31 +12,10 @@ import Input from '../input';
 import Tag from '../tag';
 import useClickOutside from '../hooks/useClickOutside';
 import Transition from '../transition';
-import Option, { SelectOptionProps } from './Option';
-
-export interface SelectProps {
-  /** 默认选中的选项 可以是字符串或者字符串数组 */
-  defaultValue?: string | string[];
-  placeholder?: string;
-  /** 是否禁用 */
-  disabled?: boolean;
-  /** 是否支持多选 */
-  multiple?: boolean;
-  /** input 的 name 属性 */
-  name?: string;
-  /** 选中值发生变化时触发 */
-  onChange?: (selectedValue: string, selectedValues: string[]) => void;
-  /** 下拉框出现/隐藏时触发 */
-  onVisibleChange?: (visible: boolean) => void;
-}
-
-export interface ISelectContext {
-  onSelect?: (value: string, isSelected?: boolean) => void;
-  selectedValues: string[];
-  multiple?: boolean;
-}
-
-export const SelectContext = createContext<ISelectContext>({ selectedValues: [] });
+import { SelectOptionProps, SelectProps } from './interface';
+import { SelectContext, ISelectContext } from './selectContext';
+import Option from './option';
+import './style/index';
 
 export const RootSelect: FC<SelectProps> = (props) => {
   const {
@@ -157,7 +135,7 @@ export const RootSelect: FC<SelectProps> = (props) => {
       console.error('Warning: Select has a child which is not a Option component');
     });
 
-  const containerClass = classNames('mk-select', {
+  const containerClass = classNames('yolo-select', {
     'menu-is-open': menuOpen,
     'is-disabled': disabled,
     'is-multiple': multiple,
@@ -165,7 +143,7 @@ export const RootSelect: FC<SelectProps> = (props) => {
 
   return (
     <div className={containerClass} ref={containerRef}>
-      <div className="mk-select-input" onClick={handleClick}>
+      <div className="yolo-select-input" onClick={handleClick}>
         <Input
           ref={inputRef}
           placeholder={placeholder}
@@ -180,11 +158,11 @@ export const RootSelect: FC<SelectProps> = (props) => {
       </div>
       <SelectContext.Provider value={passedContext}>
         <Transition in={menuOpen} animation="zoom-in-top" timeout={300}>
-          <ul className="mk-select-dropdown">{generateOptions()}</ul>
+          <ul className="yolo-select-dropdown">{generateOptions()}</ul>
         </Transition>
       </SelectContext.Provider>
       {multiple && (
-        <div className="mk-selected-tags" style={{ maxWidth: containerWidth.current - 32 }}>
+        <div className="yolo-selected-tags" style={{ maxWidth: containerWidth.current - 32 }}>
           {selectedValues.map((selectedValue, index) => (
             <Tag
               // eslint-disable-next-line react/no-array-index-key
@@ -203,7 +181,7 @@ export const RootSelect: FC<SelectProps> = (props) => {
 };
 
 RootSelect.defaultProps = {
-  name: 'mk-select',
+  name: 'yolo-select',
 };
 export type ISelectComponent = FC<SelectProps> & {
   Option: FC<SelectOptionProps>;
