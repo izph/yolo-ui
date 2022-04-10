@@ -1,0 +1,43 @@
+@import '../../style/index.less';
+@import './mixins.less';
+
+.yolo-tag {
+    display: inline-block;
+    box-sizing: border-box;
+    vertical-align: middle;
+    border-radius: 3px;
+    .tag-size(@tag-padding-y, @tag-padding-x, @tag-font-size);
+
+    .tag-text {
+        vertical-align: middle;
+    }
+
+    .tag-close-icon {
+        margin-left: 4px;
+        vertical-align: middle;
+    }
+}
+
+.tag-lg {
+    .tag-size(@tag-padding-y-lg, @tag-padding-x-lg, @tag-font-size-lg);
+}
+
+.tag-sm {
+    .tag-size(@tag-padding-y-sm, @tag-padding-x-sm, @tag-font-size-sm);
+}
+
+each(@theme-colors, {
+        .tag-@{key} {
+            color: @value;
+            background-color: rgba(@value, .1);
+            border: 1px solid rgba(@value, .2);
+
+            .yolo-icon {
+                &:hover {
+                    color: darken(@value, 10%);
+                }
+            }
+        }
+    }
+
+)
