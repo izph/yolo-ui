@@ -1,8 +1,46 @@
-@popupPrefix: yolo-alert;
+@import '../../style/index.less';
+@import './mixins.less';
 
-.@{popupPrefix} {
-  padding: 20px;
-  color: white;
-  background: white;
-  border-radius: 3px;
+@alert-colors: {
+  success: @success-100;
+  info: @blue-100;
+  warning: @warning-100;
+  error: @danger-100;
 }
+
+;
+
+.yolo-alert {
+  position: relative;
+  margin-bottom: @alert-margin-bottom;
+  padding: @alert-padding-y @alert-padding-x;
+  border: @alert-border-width solid transparent;
+  border-radius: @alert-border-radius;
+
+  .yolo-alert-close {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: @alert-close-padding-y @alert-close-padding-x;
+    color: @font-color-normal;
+    font-size: @alert-description-font-size;
+    cursor: pointer;
+  }
+
+  .yolo-alert-desc {
+    margin: @alert-description-top-margin 0 0;
+    font-size: @alert-description-font-size;
+  }
+}
+
+each(@alert-colors, {
+    .yolo-alert-@{key} {
+      .alert-style(@value, darken(@value, 5%), @font-color-normal);
+
+      >p {
+        color: @font-color-light;
+      }
+    }
+  }
+
+)

@@ -28,8 +28,12 @@ export interface UploadProps {
   headers?: { [key: string]: any };
   name?: string;
   data?: { [key: string]: any };
-  withCredentials?: boolean;
+  withCredentials?: boolean; // 是否携带cookie
   accept?: string;
   multiple?: boolean;
   drag?: boolean;
+}
+
+export interface DraggerProps {
+  onFile: (files: FileList) => void;
 }

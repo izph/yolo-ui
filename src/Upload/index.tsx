@@ -97,6 +97,7 @@ export const Upload: FC<UploadProps> = (props) => {
     });
     const formData = new FormData();
     formData.append(name || 'file', file);
+    // 添加额外的数据
     if (data) {
       Object.keys(data).forEach((key) => {
         formData.append(key, data[key]);
@@ -108,6 +109,7 @@ export const Upload: FC<UploadProps> = (props) => {
           ...headers,
           'Content-Type': 'multipart/form-data',
         },
+        // axios内置的属性
         withCredentials,
         // axios内置的显示进度的方法
         onUploadProgress: (e) => {

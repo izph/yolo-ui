@@ -1,15 +1,13 @@
 import React, { FC, useState, DragEvent } from 'react';
 import classNames from 'classnames';
-
+import { DraggerProps } from './interface';
 import './style/index';
-interface DraggerProps {
-  onFile: (files: FileList) => void;
-}
 
 export const Dragger: FC<DraggerProps> = (props) => {
   const { onFile, children } = props;
   const [dragOver, setDragOver] = useState(false);
-  const klass = classNames('yolo-uploader-dragger', {
+  // 根据dragOver的值，动态添加is-dragover类名
+  const classes = classNames('yolo-uploader-dragger', {
     'is-dragover': dragOver,
   });
   const handleDrop = (e: DragEvent<HTMLElement>) => {
@@ -23,7 +21,7 @@ export const Dragger: FC<DraggerProps> = (props) => {
   };
   return (
     <div
-      className={klass}
+      className={classes}
       onDragOver={(e) => {
         handleDrag(e, true);
       }}
