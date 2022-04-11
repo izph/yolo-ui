@@ -1,78 +1,91 @@
 ---
-title: Tag 标签
+title: Tabs 标签页
 group:
   title: 数据展示
-  order: 8
+  order: 7
 nav:
   title: 组件
   path: /components
 ---
 
-# Tag 标签
+### 基本
 
-进行标记和分类的小标签。
-
-## 何时使用
-
-- 用于标记事物的属性和维度。
-- 进行分类。
-
-## 基本
+默认选中第一项。
 
 ```tsx
 import React from 'react';
-import { Tag } from 'yolo-ui';
+import { Tabs } from 'yolo-ui';
+
+const { TabPane } = Tabs;
 
 export default () => {
-  const handleClick = () => {
-    console.log('close');
+  const handleClick = (key: number) => {
+    console.log(key);
   };
 
   return (
-    <>
-      <Tag text="Tag1" closable onClose={handleClick} />
-      <Tag text="Tag2" closable={false} />
-    </>
+    <Tabs onTabClick={handleClick}>
+      <TabPane tab="Tab 1">Content of Tab Pane 1</TabPane>
+      <TabPane tab="Tab 2">Content of Tab Pane 2</TabPane>
+      <TabPane tab="Tab 3">Content of Tab Pane 3</TabPane>
+    </Tabs>
   );
 };
 ```
 
-## 颜色
+### 禁用
+
+禁用某一项。
 
 ```tsx
 import React from 'react';
-import { Tag } from 'yolo-ui';
+import { Tabs } from 'yolo-ui';
+
+const { TabPane } = Tabs;
 
 export default () => (
-  <>
-    <Tag text="Tag1" color="success" />
-    <Tag text="Tag2" color="warning" />
-    <Tag text="Tag3" color="danger" />
-  </>
+  <Tabs defaultActiveKey={1}>
+    <TabPane tab="Tab 1">Content of Tab Pane 1</TabPane>
+    <TabPane tab="Tab 2">Content of Tab Pane 2</TabPane>
+    <TabPane tab="Tab 3" disabled>
+      Content of Tab Pane 3
+    </TabPane>
+  </Tabs>
 );
 ```
 
-## 尺寸
+### 卡片式页签
+
+另一种样式的页签，不提供对应的垂直样式。
 
 ```tsx
 import React from 'react';
-import { Tag } from 'yolo-ui';
+import { Tabs } from 'yolo-ui';
+
+const { TabPane } = Tabs;
 
 export default () => (
-  <>
-    <Tag text="Tag1" size="sm" />
-    <Tag text="Tag2" />
-    <Tag text="Tag3" size="lg" />
-  </>
+  <Tabs defaultActiveKey={0} type="card">
+    <TabPane tab="Tab 1">Content of Tab Pane 1</TabPane>
+    <TabPane tab="Tab 2">Content of Tab Pane 2</TabPane>
+    <TabPane tab="Tab 3">Content of Tab Pane 3</TabPane>
+  </Tabs>
 );
 ```
 
-## API
+### API
 
-|   参数   |       说明       |    类型    | 默认值  |
-| :------: | :--------------: | :--------: | :-----: |
-| closable | 标签是否可以关闭 | `boolean`  | `false` |
-|  color   |      标签色      |  `string`  |    -    |
-|   text   |    Tag 的文本    |  `string`  |    -    |
-|   size   |    Tag 的尺寸    |  `string`  |    -    |
-| onClose  |   关闭时的回调   | () => void |    -    |
+#### Tabs
+
+| 参数             | 说明                                         | 类型                  | 默认值 |
+| ---------------- | -------------------------------------------- | --------------------- | ------ |
+| defaultActiveKey | 初始化选中面板的 key，如果没有设置 activeKey | number                | 0      |
+| type             | 页签的基本样式，可选 line、card 类型         | string                | `line` |
+| onTabClick       | tab 被点击的回调                             | function(key: number) | -      |
+
+#### Tabs.TabPane
+
+| 参数     | 说明             | 类型      | 默认值 |
+| -------- | ---------------- | --------- | ------ |
+| disabled | 是否禁用         | boolean   | false  |
+| tab      | 选项卡头显示文字 | ReactNode | -      |
