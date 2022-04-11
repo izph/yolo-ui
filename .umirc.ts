@@ -14,6 +14,10 @@ export default defineConfig({
   devServer: {
     port: 8888,
   },
+  theme: {
+    // 修改 dumi 默认主题的主色，更多变量详见：https://github.com/umijs/dumi/blob/master/packages/theme-default/src/style/variables.less
+    '@c-primary': '#4080ff',
+  },
   // exportStatic: {}, // 将所有路由输出为 HTML 目录结构，以免刷新页面时 404
   // resolve: {
   //   includes: ['docs', 'components'],
