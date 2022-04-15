@@ -26,6 +26,7 @@
 
 each(@alert-colors, {
     .yolo-alert-@{key} {
+      // 降低一定数值的颜色亮度：darken()
       .alert-style(@value, darken(@value, 5%), @font-color-normal);
 
       >p {

@@ -15,10 +15,15 @@ export type ButtonType = 'primary' | 'default' | 'danger' | 'link' | 'info' | 'd
 export type ButtonHTMLTypes = 'submit' | 'button' | 'reset';
 export interface BaseButtonProps {
   className?: string;
+  /** 按钮禁用 */
   disabled?: boolean;
+  /** 按钮大小 */
   size?: ButtonSize;
+  /** 按钮类型 */
   type?: ButtonType;
+  /** 按钮children */
   children: React.ReactNode;
+  /** type为link时的url */
   href?: string;
 }
 // button 和 a链接 的原生属性太多了，可以直接把全部属性加上
