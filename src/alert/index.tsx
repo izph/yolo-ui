@@ -5,29 +5,22 @@ import CloseOutlined from '@ant-design/icons/CloseOutlined';
 import Transition from '../transition/index';
 import './style/index';
 
-const Alert: FC<AlertProps> = ({
-  type,
-  description,
-  message,
-  closable, // Whether Alert can be closed
-  onClose,
-}) => {
+const Alert: FC<AlertProps> = ({ type, description, message, closable, onClose }) => {
   const [closed, setClosed] = useState(false);
 
   const handleClose = (e: React.MouseEvent<HTMLElement, MouseEvent>) => {
     setClosed(true);
-    onClose?.(e);
+    onClose && onClose(e);
   };
 
-  const classes = classNames('yolo-alert', 'className', {
+  const classes = classNames('yolo-alert', {
     [`yolo-alert-${type}`]: type,
   });
-  const titleClass = classNames('yolo-alert-message');
 
   return (
     <Transition in={!closed} timeout={300} animation="zoom-in-left">
       <div className={classes}>
-        <span className={titleClass}>{message}</span>
+        <span className={'yolo-alert-message'}>{message}</span>
         {description && <p className="yolo-alert-desc">{description}</p>}
         {closable && (
           <span className="yolo-alert-close" onClick={handleClose}>

@@ -19,9 +19,7 @@ group:
 
 ## 警告样式
 
-警告提示分为四种样式，默认是`warning`。
-
-`success` | `info` | `warning` | `error`
+警告提示分为四种样式，默认类型为 `info`，`message`为内容信息。
 
 ```tsx
 import React from 'react';
@@ -29,10 +27,10 @@ import { Alert } from 'yolo-ui';
 
 export default () => (
   <div>
-    <Alert message="Success Text" type="success" />
-    <Alert message="Info Text" type="info" />
-    <Alert message="Warning Text" type="warning" />
-    <Alert message="Error Text" type="error" />
+    <Alert type="info" message="Info Text" />
+    <Alert type="warning" message="Warning Text" />
+    <Alert type="success" message="Success Text" />
+    <Alert type="error" message="Error Text" />
   </div>
 );
 ```
@@ -73,7 +71,7 @@ export default () => (
 
 ## 可关闭的警告提示
 
-设置`closable`属性和添加`onClose`方法可显示关闭按钮，点击并可关闭警告提示。
+设置`closable`属性可显示关闭警告提示按钮，添加`onClose`方法可在点击关闭按钮时触发回调函数。
 
 ```tsx
 import React from 'react';
@@ -81,7 +79,14 @@ import { Alert } from 'yolo-ui';
 
 export default () => (
   <div>
-    <Alert message="Success Text" type="success" closable />
+    <Alert
+      message="Success Text"
+      type="success"
+      closable
+      onClose={() => {
+        console.log('close Success Text');
+      }}
+    />
     <Alert message="Info Text" type="info" closable />
     <Alert
       message="Warning Text"
@@ -104,7 +109,7 @@ export default () => (
 | 属性        | 说明                     | 类型                                          | 默认值  |
 | ----------- | ------------------------ | --------------------------------------------- | ------- |
 | type        | 警告类型                 | `success \| info \| warning \| error`，非必填 | `info`  |
-| closable    | 是否显示关闭按钮         | `boolean`                                     | `false` |
-| description | 警告提示的辅助性文字介绍 | `ReactNode`                                   | -       |
 | message     | 警告提示内容             | `ReactNode`                                   | -       |
+| description | 警告提示的辅助性文字介绍 | `ReactNode`                                   | -       |
+| closable    | 是否显示关闭按钮         | `boolean`                                     | `false` |
 | onClose     | 关闭时触发的回调函数     | `void`                                        | -       |

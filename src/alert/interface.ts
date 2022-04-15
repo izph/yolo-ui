@@ -1,16 +1,22 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 
 export type AlertType = 'info' | 'success' | 'error' | 'warning';
 
 export interface AlertProps {
+  /** 警告提示内容 */
   message: string;
+  /** 警告内容描述 */
   description?: string;
-  /**
-   * Set this to change alert type
-   * @default info
-   */
+  /** 警告的类型, defaultValue: info */
   type?: AlertType;
+  /** 是否可关闭 */
   closable?: boolean;
+  /** 是否显示图标 */
+  showIcon?: boolean;
+  /** 自定义图标 */
+  icon?: ReactNode;
+  /** 类名 */
   className?: string;
+  /** 关闭的回调 */
   onClose?: (e: React.MouseEvent<HTMLElement, MouseEvent>) => void;
 }
