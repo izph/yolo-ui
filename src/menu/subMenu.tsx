@@ -10,7 +10,13 @@ const SubMenu: React.FC<SubMenuProps> = (props) => {
   const subMenuContext = useContext(MenuContext);
   const { mode, defaultOpenKeys } = subMenuContext;
   const openedSubMenus = defaultOpenKeys as Array<string>;
+  /* 
+    垂直才有下拉菜单
+  */
   const isOpend = index && mode === 'vertical' ? openedSubMenus.includes(index) : false;
+  /* 
+    是否展开 菜单项
+  */
   const [menuOpen, setOpen] = useState(isOpend);
 
   const classes = classNames('yolo-menu-item yolo-submenu-item', className, {
@@ -18,6 +24,7 @@ const SubMenu: React.FC<SubMenuProps> = (props) => {
     'is-opened': menuOpen,
     'is-vertical': mode === 'vertical',
   });
+
   let timer: any;
   const handleMouse = (e: React.MouseEvent, toggle: boolean) => {
     clearTimeout(timer);
@@ -26,6 +33,7 @@ const SubMenu: React.FC<SubMenuProps> = (props) => {
       setOpen(toggle);
     }, 300);
   };
+
   const handleClick = (e: React.MouseEvent) => {
     e.preventDefault();
     setOpen(!menuOpen);
@@ -63,7 +71,7 @@ const SubMenu: React.FC<SubMenuProps> = (props) => {
   };
 
   return (
-    <li key={index} style={style} className={classes} {...handleEvents}>
+    <li key={index} style={style} className={classes}>
       <div className="yolo-submenu-item" {...clickEvents}>
         {title}
         <Icon icon="angle-down" className="arrow-icon" />

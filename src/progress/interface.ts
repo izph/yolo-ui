@@ -1,10 +1,23 @@
-import { ThemeProps } from '../Icon/index';
 import React from 'react';
 
+export type ProgressThemeProps =
+  | 'primary'
+  | 'secondary'
+  | 'success'
+  | 'info'
+  | 'warning'
+  | 'danger'
+  | 'light'
+  | 'dark';
 export interface ProgressProps {
-  percent: number; // 百分比
-  strokeHeight?: number; // 设置高度
-  showText?: boolean; // 是否显示百分比文字
-  styles?: React.CSSProperties; // 用户自定义样式
-  theme?: ThemeProps; // 进度条主题颜色
+  /* 百分比 */
+  percent: number;
+  /* 设置高度 */
+  strokeHeight?: number;
+  /* 是否显示百分比文字 */
+  showText?: boolean;
+  /* 用户自定义样式 */
+  style?: React.CSSProperties;
+  /* 进度条主题颜色 */
+  theme?: ProgressThemeProps;
 }

@@ -45,7 +45,7 @@ export interface MenuContextProps {
 export interface SubMenuProps {
   /* 菜单项唯一标识 */
   index?: string;
-  /* 菜单标题 */
+  /* SubMenu菜单标题 */
   title?: string;
   className?: string;
   style: React.CSSProperties;

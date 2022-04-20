@@ -12,7 +12,7 @@ group:
 
 ## 水平菜单
 
-水平的顶部导航菜单。`mode`值为`horizontal`。
+水平的顶部导航菜单。`mode`值为 `horizontal`。
 
 ```tsx
 import React from 'react';
@@ -38,7 +38,7 @@ export default () => {
 
 ## 垂直菜单
 
-垂直菜单，子菜单内嵌在菜单区域。`mode`值为`vertical`。
+垂直菜单，子菜单内嵌在菜单区域。`mode`值为 `vertical`。
 
 ```tsx
 import React from 'react';
@@ -55,7 +55,7 @@ export default () => (
 
 ## 展开子菜单
 
-通过`defaultOpenKeys`设置当前展开的 `SubMenu` 菜单项 `key` 数组
+通过 `defaultOpenKeys`设置当前展开的 `SubMenu` 菜单项 `key` 数组
 
 点击菜单，收起其他展开的所有菜单，保持菜单聚焦简洁。
 

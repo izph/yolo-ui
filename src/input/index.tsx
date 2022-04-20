@@ -4,6 +4,11 @@ import classNames from 'classnames';
 import { InputProps } from './interface';
 import './style/index';
 
+/* 
+  React.forwardRef字面意思理解为转发Ref，它会创建一个React组件，这个组件能够将
+  其接受的 ref 属性转发到其组件树下的另一个组件中，转发refs到DOM组件
+  （ref不像props作为参数可以传递，所以要想传递ref得用forwardRef）
+*/
 const Input = forwardRef<HTMLInputElement, InputProps>((props, ref) => {
   // 取出各种属性值
   const { size, disabled, prefix, suffix, style, icon, ...restProps } = props;
