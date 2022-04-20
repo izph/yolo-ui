@@ -1,25 +1,25 @@
 import React, { FC, useState } from 'react';
 import classNames from 'classnames';
-// import { MenuProps, MenuItemProps, MenuContextProps, SubMenuProps } from './interface';
-import MenuContext, { MenuContextProps } from './MenuContext';
-// import MenuItem from './MenuItem';
-// import SubMenu from './SubMenu';
+import { MenuProps, MenuItemProps, MenuContextProps, SubMenuProps } from './interface';
+import MenuContext from './MenuContext';
+import MenuItem from './MenuItem';
+import SubMenu from './SubMenu';
 
-import MenuItem, { MenuItemProps } from './MenuItem';
-import SubMenu, { SubMenuProps } from './SubMenu';
+// import MenuItem, { MenuItemProps } from './MenuItem';
+// import SubMenu, { SubMenuProps } from './SubMenu';
 
 import './style/index';
 
-export type MenuMode = 'horizontal' | 'vertical';
-export type SelectCallback = (index: string) => void;
-export interface MenuProps {
-  defaultIndex?: string;
-  className?: string;
-  mode?: MenuMode;
-  style?: React.CSSProperties;
-  onClick?: SelectCallback;
-  defaultOpenKeys?: string[]; // 初始展开的 SubMenu 菜单项 key 数组 只在纵向模式下生效
-}
+// export type MenuMode = 'horizontal' | 'vertical';
+// export type SelectCallback = (selectKey: string) => void;
+// export interface MenuProps {
+//   defaultIndex?: string;
+//   className?: string;
+//   mode?: MenuMode;
+//   style?: React.CSSProperties;
+//   onClick?: SelectCallback;
+//   defaultOpenKeys?: string[]; // 初始展开的 SubMenu 菜单项 key 数组 只在纵向模式下生效
+// }
 
 const RootMenu: FC<MenuProps> = ({
   className,
@@ -27,7 +27,7 @@ const RootMenu: FC<MenuProps> = ({
   style,
   children,
   defaultIndex,
-  onClick,
+  onSelect,
   defaultOpenKeys,
 }) => {
   // const { className, mode, style, children, defaultIndex, onSelect, defaultOpenKeys } = props;
@@ -40,8 +40,8 @@ const RootMenu: FC<MenuProps> = ({
 
   const handleClick = (index: string) => {
     setCurrentSelectedKey(index);
-    if (typeof onClick === 'function') {
-      onClick(index);
+    if (typeof onSelect === 'function') {
+      onSelect(index);
     }
   };
 

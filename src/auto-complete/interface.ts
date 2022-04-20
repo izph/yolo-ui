@@ -8,7 +8,7 @@ export interface DataSourceObject {
 export type DataSourceType<T = {}> = T & DataSourceObject;
 
 export interface AutoCompleteProps extends Omit<InputProps, 'onSelect'> {
-  /** 搜索补全项的时候调用 */
+  /** 搜索补全项的时候调用，返回搜索结果 */
   onSearch: (str: string) => DataSourceType[] | Promise<DataSourceType[]>;
   /** 选中下拉选项时触发的回调 */
   onSelect?: (item: DataSourceType) => void;

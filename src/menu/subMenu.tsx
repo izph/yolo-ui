@@ -1,17 +1,9 @@
 import React, { useContext, useState, FunctionComponentElement } from 'react';
 import classNames from 'classnames';
-// import { SubMenuProps, MenuItemProps } from './interface';
-import { MenuItemProps } from './MenuItem';
+import { SubMenuProps, MenuItemProps } from './interface';
 import MenuContext from './MenuContext';
 import Icon from '../Icon/index';
 import Transition from '../Transition/index';
-
-export interface SubMenuProps {
-  index?: string;
-  title?: string;
-  className?: string;
-  style: React.CSSProperties;
-}
 
 const SubMenu: React.FC<SubMenuProps> = (props) => {
   const { index, title, className, style, children } = props;

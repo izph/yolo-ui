@@ -26,6 +26,7 @@ export interface BaseButtonProps {
   /** type为link时的url */
   href?: string;
 }
+
 // button 和 a链接 的原生属性太多了，可以直接把全部属性加上
 // 从哪里可以找到button所有的props？react已经提供好的
 // ButtonHTMLAttributes<HTMLElement> 所有button属性

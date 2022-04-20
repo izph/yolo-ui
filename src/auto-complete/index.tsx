@@ -18,6 +18,7 @@ const AutoComplete: FC<AutoCompleteProps> = ({
 }) => {
   // 用户输入的value
   const [inputValue, setInputValue] = useState(value as string);
+  // 显示下拉选项
   const [showDropdown, setShowDropdown] = useState(false);
   // 数据加载时的状态
   const [isLoading, setIsLoading] = useState(false);
@@ -27,9 +28,9 @@ const AutoComplete: FC<AutoCompleteProps> = ({
   const [highlightIndex, setHighlightIndex] = useState(-1);
   // 记录状态，handleChange设为true状态，handleSelect为false
   const triggerSearch = useRef(false);
-  // 和DOM打交道，
+  // 和DOM打交道
   const dropdownRef = useRef<HTMLDivElement>(null);
-  // 对用户输入的内容，用防抖
+  // 对用户输入的内容，利用防抖降低 频率
   const debouncedValue = useDebounce(inputValue, 300);
 
   // 当点击到AutoComplete组件外的区域，会自动关闭下拉框选项部分
@@ -52,8 +53,10 @@ const AutoComplete: FC<AutoCompleteProps> = ({
           }
         });
       } else {
+        // 设置 下拉选项值
         setOptions(result);
         if (result.length > 0) {
+          // 有值才显示
           setShowDropdown(true);
         }
       }
@@ -63,11 +66,13 @@ const AutoComplete: FC<AutoCompleteProps> = ({
     setHighlightIndex(-1);
   }, [debouncedValue, onSearch]);
 
+  // input输入框发生变化
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const newValue = e.target.value.trim(); // 去掉空格
     setInputValue(newValue);
     triggerSearch.current = true;
   };
+
   // 点击item触发
   const handleSelect = (item: DataSourceType) => {
     // 把item填充，清空下拉菜单

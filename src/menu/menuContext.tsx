@@ -1,14 +1,7 @@
-import React, { createContext } from 'react';
-// import { MenuContextProps } from './interface';
-import { MenuMode, SelectCallback } from './index';
-export interface MenuContextProps {
-  index: string;
-  onSelect?: SelectCallback;
-  mode?: MenuMode;
-  defaultOpenKeys?: string[];
-}
+import React from 'react';
+import { MenuContextProps } from './interface';
 
-const MenuContext = createContext<MenuContextProps>({
+const MenuContext = React.createContext<MenuContextProps>({
   index: '0',
 });
 
