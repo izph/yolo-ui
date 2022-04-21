@@ -53,11 +53,11 @@ export const RootSelect: FC<SelectProps> = (props) => {
   /* input的值 */
   const [value, setValue] = useState<string>(typeof defaultValue === 'string' ? defaultValue : '');
 
-  const handleOptionClick = (optionValue: string, isSelected?: boolean) => {
-    let updatedValues = [optionValue];
+  const handleOptionClick = (currSelectedValue: string, isSelected?: boolean) => {
+    let updatedValues = [currSelectedValue];
     if (!multiple) {
       setMenuOpen(false);
-      setValue(optionValue);
+      setValue(currSelectedValue);
       if (onVisibleChange) {
         onVisibleChange(false);
       }
@@ -66,14 +66,15 @@ export const RootSelect: FC<SelectProps> = (props) => {
       setValue('');
       // 如果当前点击的选项已被选中，则去除选中状态；如果之前未被选中，则设为选中状态
       updatedValues = isSelected
-        ? selectedValues.filter((v) => v !== optionValue)
-        : [...selectedValues, optionValue];
+        ? selectedValues.filter((v) => v !== currSelectedValue)
+        : [...selectedValues, currSelectedValue];
       setSelectedValues(updatedValues);
     }
 
-    if (onChange) {
-      onChange(optionValue, updatedValues);
-    }
+    onChange && onChange(currSelectedValue, updatedValues);
+    // if (onChange) {
+    //   onChange(currSelectedValue, updatedValues);
+    // }
   };
 
   /* input的值发生改变 */
@@ -118,19 +119,30 @@ export const RootSelect: FC<SelectProps> = (props) => {
       /**
        * element.getBoundingClientRect(): 获取元素位置
        * top: 元素上边框到浏览器视口的距离
+       * left: 元素左边框边框到浏览器视口的距离
+       * width: 元素自身的宽度
+       * height: 元素自身的高度
+       * bottom: top + height
+       * right: left + width
+       * x: left
+       * y: top
        */
       containerWidth.current = containerRef.current.getBoundingClientRect().width;
     }
   });
 
+  /**
+   * useClickOutside: 自定义hook
+   * 如果点击了第一个参数(containerRef)以外的元素，执行回调
+   */
   useClickOutside(containerRef, () => {
-    if (!multiple && options.includes(value)) {
-      setValue('');
-    }
-    setMenuOpen(false);
+    // if (!multiple && options.includes(value)) {
+    //   setValue('');
+    // }
     if (onVisibleChange && menuOpen) {
       onVisibleChange(false);
     }
+    setMenuOpen(false);
   });
 
   const passedContext: ISelectContext = {
@@ -139,9 +151,11 @@ export const RootSelect: FC<SelectProps> = (props) => {
     multiple,
   };
 
+  /* select没有被禁用 */
   const handleClick = (e: React.MouseEvent) => {
     e.preventDefault();
     if (!disabled) {
+      /* 每一次点击menuOpen都取反 */
       setMenuOpen(!menuOpen);
       if (onVisibleChange) {
         onVisibleChange(!menuOpen);
@@ -149,6 +163,7 @@ export const RootSelect: FC<SelectProps> = (props) => {
     }
   };
 
+  /* 为每一个Select.Option 添加index */
   const generateOptions = () =>
     React.Children.map(children, (child, i) => {
       const childElement = child as FunctionComponentElement<SelectOptionProps>;
