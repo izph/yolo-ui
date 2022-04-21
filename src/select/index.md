@@ -31,7 +31,12 @@ export default () => {
   };
 
   return (
-    <Select placeholder="请选择" onChange={handleChange} onVisibleChange={handleVisibleChange}>
+    <Select
+      placeholder="请选择"
+      onChange={handleChange}
+      onVisibleChange={handleVisibleChange}
+      defaultValue={'item1'}
+    >
       <Select.Option value="item1" />
       <Select.Option value="item2" />
       <Select.Option value="item3" />

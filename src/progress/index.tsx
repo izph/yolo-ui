@@ -9,9 +9,16 @@ import './style/index';
   theme: string 进度条主题色
   style: React.CSSProperties 用户自定义样式
 */
-const Progress: FC<ProgressProps> = ({ percent, strokeHeight, showText, style, theme }) => {
+const Progress: FC<ProgressProps> = ({
+  percent,
+  strokeHeight,
+  showText,
+  style,
+  theme,
+  ...restProps
+}) => {
   return (
-    <div className="yolo-progress-bar" style={style}>
+    <div className="yolo-progress-bar" style={style} {...restProps}>
       {/* 灰色最外层 */}
       <div className="yolo-progress-bar-outer" style={{ height: `${strokeHeight}px` }}>
         <div className={`yolo-progress-bar-inner color-${theme}`} style={{ width: `${percent}%` }}>

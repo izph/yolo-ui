@@ -25,6 +25,18 @@ const SubMenu: React.FC<SubMenuProps> = (props) => {
     'is-vertical': mode === 'vertical',
   });
 
+  /* 
+    处理点击事件
+  */
+  const handleClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    setOpen(!menuOpen);
+  };
+  /* 
+    是垂直菜单才添加点击事件
+  */
+  const clickEvents = mode === 'vertical' ? { onClick: handleClick } : {};
+
   let timer: any;
   const handleMouse = (e: React.MouseEvent, toggle: boolean) => {
     clearTimeout(timer);
@@ -32,11 +44,6 @@ const SubMenu: React.FC<SubMenuProps> = (props) => {
     timer = setTimeout(() => {
       setOpen(toggle);
     }, 300);
-  };
-
-  const handleClick = (e: React.MouseEvent) => {
-    e.preventDefault();
-    setOpen(!menuOpen);
   };
 
   const handleEvents =
@@ -47,8 +54,10 @@ const SubMenu: React.FC<SubMenuProps> = (props) => {
         }
       : {};
 
-  const clickEvents = mode === 'vertical' ? { onClick: handleClick } : {};
-
+  /* 
+     renderChildren: 和父组件类似的做法
+     subMenu里面的 MenuItem的index是 '1-1' or '1-2' ...
+  */
   const renderChildren = () => {
     const subMenuClasses = classNames('yolo-submenu', {
       'menu-opened': menuOpen,
@@ -71,7 +80,7 @@ const SubMenu: React.FC<SubMenuProps> = (props) => {
   };
 
   return (
-    <li key={index} style={style} className={classes}>
+    <li key={index} style={style} className={classes} {...handleEvents}>
       <div className="yolo-submenu-item" {...clickEvents}>
         {title}
         <Icon icon="angle-down" className="arrow-icon" />

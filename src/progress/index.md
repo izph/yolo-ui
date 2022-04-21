@@ -46,85 +46,56 @@ export default () => (
     <Progress theme="dark" percent={80} />
     <br />
     <Progress theme="primary" percent={90} />
+    <br />
+    <Progress theme="primary" percent={90} strokeHeight={30} />
   </div>
 );
 ```
 
-## 含有辅助性文字介绍的警告提示
-
-通过设置`description`属性。
+## 自定义高度
 
 ```tsx
 import React from 'react';
-import { Alert } from 'yolo-ui';
+import { Progress } from 'yolo-ui';
 
 export default () => (
   <div>
-    <Alert
-      message="Success Text"
-      description="Success Description Success Description Success Description"
-      type="success"
-    />
-    <Alert
-      message="Info Text"
-      description="Info Description Info Description Info Description Info Description"
-      type="info"
-    />
-    <Alert
-      message="Warning Text"
-      description="Warning Description Warning Description Warning Description Warning Description"
-      type="warning"
-    />
-    <Alert
-      message="Error Text"
-      description="Error Description Error Description Error Description Error Description"
-      type="error"
-    />
+    <Progress percent={20} strokeHeight={15} />
+    <br />
+    <Progress theme="success" percent={40} strokeHeight={20} />
+    <br />
+    <Progress theme="warning" percent={60} strokeHeight={30} />
+    <br />
+    <Progress theme="danger" percent={70} strokeHeight={40} />
   </div>
 );
 ```
 
-## 可关闭的警告提示
+## 是否显示百分比文字
 
-设置`closable`属性可显示关闭警告提示按钮，添加`onClose`方法可在点击关闭按钮时触发回调函数。
+通过设置`showText`属性。
 
 ```tsx
 import React from 'react';
-import { Alert } from 'yolo-ui';
+import { Progress } from 'yolo-ui';
 
 export default () => (
   <div>
-    <Alert
-      message="Success Text"
-      type="success"
-      closable
-      onClose={() => {
-        console.log('close Success Text');
-      }}
-    />
-    <Alert message="Info Text" type="info" closable />
-    <Alert
-      message="Warning Text"
-      description="Warning Description Warning Description Warning Description Warning Description"
-      type="warning"
-      closable
-    />
-    <Alert
-      message="Error Text"
-      description="Error Description Error Description Error Description Error Description"
-      type="error"
-      closable
-    />
+    <Progress percent={30} showText={false} />
+    <br />
+    <Progress theme="success" percent={40} strokeHeight={20} showText={false} />
+    <br />
+    <Progress theme="warning" percent={60} strokeHeight={30} showText={false} />
   </div>
 );
 ```
 
 ## API
 
-| 属性        | 说明                     | 类型                                          | 默认值  |
-| ----------- | ------------------------ | --------------------------------------------- | ------- |
-| type        | 警告类型                 | `success \| info \| warning \| error`，非必填 | `info`  |
-| message     | 警告提示内容             | `ReactNode`                                   | -       |
-| description | 警告提示的辅助性文字介绍 | `ReactNode`                                   | -       |
-| closable    | 是否显示关闭按钮         | `boolean`                                     | `false` |
-| onClose     | 关闭时触发的回调函数     | `void`                                        | -       |
+| 属性 | 说明 | 类型 | 默认值 |
+| --- | --- | --- | --- |
+| theme | 主题颜色 | `primary` \| `secondary` \| `success` \| `info` \| `warning` \| `danger` \| `dark`，非必填 | `primary` |
+| percent | 百分比 | `number` | - |
+| strokeHeight | 进度条高度 | `number` | - |
+| showText | 是否显示百分比文字 | `boolean` | `true` |
+| style | 自定义样式 | `React.CSSProperties` | - |

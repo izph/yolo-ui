@@ -1,6 +1,7 @@
 export interface SelectProps {
   /** 默认选中的选项 可以是字符串或者字符串数组 */
   defaultValue?: string | string[];
+  /** 提示文字 */
   placeholder?: string;
   /** 是否禁用 */
   disabled?: boolean;

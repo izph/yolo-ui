@@ -17,6 +17,15 @@ import { SelectContext, ISelectContext } from './selectContext';
 import Option from './option';
 import './style/index';
 
+/**
+ * defaultValue: string | string[] 默认选中的选项
+ * placeholder: string 提示文字
+ * disabled: boolean 是否禁用
+ * multiple: boolean 是否支持多选
+ * name: string 输入框input的name属性
+ * onChange: function 选中值发生变化时触发
+ * onVisibleChange: function 下拉框出现或者隐藏时触发
+ */
 export const RootSelect: FC<SelectProps> = (props) => {
   const {
     defaultValue,
@@ -32,7 +41,7 @@ export const RootSelect: FC<SelectProps> = (props) => {
   const containerRef = useRef<HTMLInputElement>(null);
   const containerWidth = useRef<number>(0);
   const [selectedValues, setSelectedValues] = useState<string[]>(
-    Array.isArray(defaultValue) ? defaultValue : [],
+    defaultValue instanceof Array ? defaultValue : [],
   );
   const [options, setOptions] = useState<string[]>([]);
   const [menuOpen, setMenuOpen] = useState<boolean>(false);
