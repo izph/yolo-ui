@@ -35,13 +35,13 @@ export default () => {
       placeholder="请选择"
       onChange={handleChange}
       onVisibleChange={handleVisibleChange}
-      defaultValue={'item1'}
+      // defaultValue={"item1"}
     >
       <Select.Option value="item1" />
       <Select.Option value="item2" />
       <Select.Option value="item3" />
-      <Select.Option value="disabled" disabled />
-      <Select.Option value="item4" />
+      <Select.Option value="item4" disabled />
+      <Select.Option value="item5" />
     </Select>
   );
 };
@@ -49,7 +49,7 @@ export default () => {
 
 ### 多选
 
-多选，从已有条目中选择。设置`multiple`属性
+多选，从已有条目中选择。设置 `multiple`属性
 
 ```tsx
 import React from 'react';
@@ -74,8 +74,8 @@ export default () => {
       <Select.Option value="item1" />
       <Select.Option value="item2" />
       <Select.Option value="item3" />
-      <Select.Option value="disabled" disabled />
-      <Select.Option value="item4" />
+      <Select.Option value="item4" disabled />
+      <Select.Option value="item5" />
     </Select>
   );
 };

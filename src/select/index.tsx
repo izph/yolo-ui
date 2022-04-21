@@ -37,14 +37,20 @@ export const RootSelect: FC<SelectProps> = (props) => {
     onChange,
     onVisibleChange,
   } = props;
+  /* input dom */
   const inputRef = useRef<HTMLInputElement>(null);
+  /* 外层容器dom */
   const containerRef = useRef<HTMLInputElement>(null);
   const containerWidth = useRef<number>(0);
+  /* 选中的item */
   const [selectedValues, setSelectedValues] = useState<string[]>(
     defaultValue instanceof Array ? defaultValue : [],
   );
+  /* 可选的数据，不包括disbaled的 */
   const [options, setOptions] = useState<string[]>([]);
+  /* 是否展开 选项菜单 */
   const [menuOpen, setMenuOpen] = useState<boolean>(false);
+  /* input的值 */
   const [value, setValue] = useState<string>(typeof defaultValue === 'string' ? defaultValue : '');
 
   const handleOptionClick = (optionValue: string, isSelected?: boolean) => {
@@ -70,6 +76,7 @@ export const RootSelect: FC<SelectProps> = (props) => {
     }
   };
 
+  /* input的值发生改变 */
   const handleInputValueChange = (e: ChangeEvent<HTMLInputElement>) => {
     const newValue = e.target.value.trim();
     if (multiple) return;
@@ -80,28 +87,38 @@ export const RootSelect: FC<SelectProps> = (props) => {
     const tempArr: string[] = [];
     React.Children.map(children, (child) => {
       const childElement = child as FunctionComponentElement<SelectOptionProps>;
+      console.log(childElement);
       const {
         // eslint-disable-next-line no-shadow
-        props: { value = '' },
+        props: { value = '', disabled },
       } = childElement;
-
-      if (value !== 'disabled' && value) tempArr.push(value);
+      // value存在，且不是disbaled的
+      if (!disabled && value) tempArr.push(value);
     });
+    /* 更新可选的item */
     setOptions(tempArr);
   }, [children]);
 
   useEffect(() => {
     // focus input
     if (inputRef.current) {
+      /* 手动触发聚焦 */
       inputRef.current.focus();
       if (multiple && selectedValues.length > 0) {
         inputRef.current.placeholder = '';
-      } else if (placeholder) inputRef.current.placeholder = placeholder;
+      } else if (placeholder) {
+        // 如果selectedValues为空，则显示placeholder
+        inputRef.current.placeholder = placeholder;
+      }
     }
   }, [selectedValues, multiple, placeholder]);
 
   useEffect(() => {
     if (containerRef.current) {
+      /**
+       * element.getBoundingClientRect(): 获取元素位置
+       * top: 元素上边框到浏览器视口的距离
+       */
       containerWidth.current = containerRef.current.getBoundingClientRect().width;
     }
   });
