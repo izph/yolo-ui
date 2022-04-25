@@ -6,6 +6,7 @@ import { SelectOptionProps } from './interface';
 import './style/index';
 export const Option: FC<SelectOptionProps> = ({ value, label, disabled, children, index }) => {
   const { onSelect, selectedValues, multiple } = useContext(SelectContext);
+  /* 当前Option是否被选中 */
   const isSelected = selectedValues.includes(value);
   const classes = classNames('yolo-select-item', {
     'is-disabled': disabled,

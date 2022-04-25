@@ -12,8 +12,11 @@ export const Tag: FC<TagProps> = (props) => {
     [`tag-${color}`]: color,
     [`tag-${size}`]: size,
   });
+
+  /** 关闭标签 */
   const handleClose = (e: React.MouseEvent) => {
     if (onClose) {
+      /** 用户自定义回调 */
       onClose();
     }
     setHide(true);
