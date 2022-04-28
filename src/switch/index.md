@@ -19,9 +19,9 @@ import { Switch } from 'yolo-ui';
 export default () => {
   return (
     <>
-      <Switch disabled />
+      <Switch defaultChecked />
       <br />
-      <Switch color={'red'} />
+      <Switch color={'red'} disabled defaultChecked />
       <br />
       <Switch size="lg" />
       <br />

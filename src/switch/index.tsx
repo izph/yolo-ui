@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import classNames from 'classnames';
 import { SwitchProps } from './interface';
 import './style/index';
@@ -17,7 +17,7 @@ const Switch: React.FC<SwitchProps> = (props) => {
   const {
     color = '#09f',
     size,
-    checked,
+    defaultChecked,
     disabled,
     onText,
     offText,
@@ -25,7 +25,11 @@ const Switch: React.FC<SwitchProps> = (props) => {
     onClick,
     className,
   } = props;
-  const classes = classNames('yolo-switch', className);
+  const [isChecked, setChecked] = useState(defaultChecked);
+  const classes = classNames('yolo-switch', className, {
+    'yolo-switch-checked': isChecked,
+    'yolo-switch-disabled': disabled,
+  });
   const handleClass = classNames('yolo-switch-handle', {
     [`yolo-switch-${size}`]: size,
     'is-disabled': disabled,
@@ -34,18 +38,28 @@ const Switch: React.FC<SwitchProps> = (props) => {
     e.persist();
     onChange && onChange(e);
   };
+  const handleClick = () => {
+    if (!disabled) {
+      setChecked(!isChecked);
+    }
+  };
+
   return (
-    <div className={classes}>
-      <label className={handleClass} style={{ cursor: disabled ? 'not-allowed' : 'pointer' }}>
-        <input type="checkbox" checked={checked} onChange={handleChange} />
-        <span
-          className="yolo-switch-inner"
-          style={{ backgroundColor: color }}
-          data-onText={onText}
-        ></span>
-        <span className="offText">{offText}</span>
-      </label>
-    </div>
+    // <div className={classes}>
+    //   <label className={handleClass} style={{ cursor: disabled ? 'not-allowed' : 'pointer' }}>
+    //     <input type="checkbox" checked={checked} onChange={handleChange} />
+    //     <span
+    //       className="yolo-switch-inner"
+    //       style={{ backgroundColor: color }}
+    //       data-onText={onText}
+    //     ></span>
+    //     <span className="offText">{offText}</span>
+    //   </label>
+    // </div>
+
+    <button type="button" className={classes} onClick={handleClick}>
+      <div className="yolo-switch-handle"></div>
+    </button>
   );
 };
 
