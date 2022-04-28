@@ -11,6 +11,7 @@ export { default as Input } from './input';
 export { default as Tabs } from './tabs';
 export { default as Progress } from './progress';
 export { default as AutoComplete } from './auto-complete';
+export { default as Switch } from './switch';
 export { default as Upload } from './upload';
 export { default as Tag } from './tag';
 export { default as Select } from './select';

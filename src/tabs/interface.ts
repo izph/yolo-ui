@@ -1,3 +1,4 @@
+/** 卡片和线 */
 export type TabsType = 'line' | 'card';
 
 export interface TabsProps {
@@ -10,5 +11,6 @@ export interface TabsProps {
 
 export interface TabPaneProps {
   tab: React.ReactNode;
+  /** 禁止点击 */
   disabled?: boolean;
 }
