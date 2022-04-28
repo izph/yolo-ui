@@ -29,6 +29,7 @@ const Switch: React.FC<SwitchProps> = (props) => {
   const classes = classNames('yolo-switch', className, {
     'yolo-switch-checked': isChecked,
     'yolo-switch-disabled': disabled,
+    [`yolo-switch-${size}`]: size,
   });
   const handleClass = classNames('yolo-switch-handle', {
     [`yolo-switch-${size}`]: size,
@@ -59,12 +60,11 @@ const Switch: React.FC<SwitchProps> = (props) => {
 
     <button type="button" className={classes} onClick={handleClick}>
       <div className="yolo-switch-handle"></div>
+      <span className="yolo-switch-inner">{isChecked ? onText : offText}</span>
     </button>
   );
 };
 
-Switch.defaultProps = {
-  size: 'md',
-};
+Switch.defaultProps = {};
 
 export default Switch;

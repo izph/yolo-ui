@@ -110,21 +110,30 @@
     -ms-user-select: none;
     user-select: none;
 
-    &.yolo-switch-checked {
-        background: @primary;
 
-        .yolo-switch-handle {
-            left: calc(100% - 20px);
-        }
-    }
 
-    &.yolo-switch-checked:focus {
-        box-shadow: 0 0 0 2px #e6f7ff;
-    }
+
 
     &.yolo-switch-disabled {
         cursor: not-allowed;
         opacity: .4;
+    }
+
+    &.yolo-switch-sm {
+        min-width: 28px;
+        height: 16px;
+        line-height: 16px;
+
+        &.yolo-switch-checked {
+            .yolo-switch-handle {
+                left: calc(100% - 14px);
+            }
+        }
+
+        .yolo-switch-handle {
+            width: 12px;
+            height: 12px;
+        }
     }
 }
 
@@ -140,8 +149,6 @@
     width: 18px;
     height: 18px;
     transition: all .2s ease-in-out;
-
-
 }
 
 .yolo-switch-handle:before {
@@ -152,4 +159,28 @@
     box-shadow: 0 2px 4px #00230b33;
     transition: all .2s ease-in-out;
     content: "";
+}
+
+.yolo-switch-inner {
+    display: block;
+    margin: 0 7px 0 25px;
+    color: #fff;
+    font-size: 12px;
+    transition: margin .2s;
+}
+
+.yolo-switch-checked {
+    background: @primary;
+
+    .yolo-switch-handle {
+        left: calc(100% - 20px);
+    }
+
+    .yolo-switch-inner {
+        margin: 0 25px 0 7px;
+    }
+}
+
+.yolo-switch-checked:focus {
+    box-shadow: 0 0 0 2px #e6f7ff;
 }
