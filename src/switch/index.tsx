@@ -14,11 +14,43 @@ import './style/index';
  * @param {size} string 组件的尺寸
  */
 const Switch: React.FC<SwitchProps> = (props) => {
-  const { color, size, checked, disabled, onText, offText, onChange, onClick, className } = props;
+  const {
+    color = '#09f',
+    size,
+    checked,
+    disabled,
+    onText,
+    offText,
+    onChange,
+    onClick,
+    className,
+  } = props;
   const classes = classNames('yolo-switch', className);
-  return <div className={classes}></div>;
+  const handleClass = classNames('yolo-switch-handle', {
+    [`yolo-switch-${size}`]: size,
+    'is-disabled': disabled,
+  });
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    e.persist();
+    onChange && onChange(e);
+  };
+  return (
+    <div className={classes}>
+      <label className={handleClass} style={{ cursor: disabled ? 'not-allowed' : 'pointer' }}>
+        <input type="checkbox" checked={checked} onChange={handleChange} />
+        <span
+          className="yolo-switch-inner"
+          style={{ backgroundColor: color }}
+          data-onText={onText}
+        ></span>
+        <span className="offText">{offText}</span>
+      </label>
+    </div>
+  );
 };
 
-Switch.defaultProps = {};
+Switch.defaultProps = {
+  size: 'md',
+};
 
 export default Switch;

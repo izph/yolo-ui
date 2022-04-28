@@ -1,0 +1,16 @@
+.switch-size(@switch-width, @switch-height, @switch-line-height, @switch-text-indent, @switch-margin-right) {
+    width: @switch-width;
+    height: @switch-height;
+
+    .yolo-switch-inner {
+        &::before {
+            line-height: @switch-line-height;
+            text-indent: @switch-text-indent;
+        }
+    }
+
+    .offText {
+        line-height: @switch-line-height;
+        margin-right: @switch-margin-right;
+    }
+}

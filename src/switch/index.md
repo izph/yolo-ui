@@ -17,6 +17,18 @@ import React from 'react';
 import { Switch } from 'yolo-ui';
 
 export default () => {
-  return <Switch />;
+  return (
+    <>
+      <Switch disabled />
+      <br />
+      <Switch color={'red'} />
+      <br />
+      <Switch size="lg" />
+      <br />
+      <Switch size="sm" />
+      <br />
+      <Switch onText={'开'} offText={'关'} />
+    </>
+  );
 };
 ```

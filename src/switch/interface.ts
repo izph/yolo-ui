@@ -4,7 +4,7 @@ export interface SwitchProps {
   /* 主题颜色 */
   color?: string;
   /** 是否被选中 */
-  checked?: string;
+  checked?: boolean;
   /* 用户自定义类名 */
   className?: string;
   /** 组件的尺寸 */
@@ -18,5 +18,5 @@ export interface SwitchProps {
   /** 对外暴露的点击事件 */
   onClick?: () => void;
   /** 状态切换时的文本 */
-  onChange?: () => void;
+  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
