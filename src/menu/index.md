@@ -83,7 +83,7 @@ export default () => (
 ### Menu
 
 | 参数 | 说明 | 类型 | 默认值 |
-| :-: | :-: | :-: | :-: |
+| --- | --- | --- | --- |
 | defaultOpenKeys | 初始展开的 `SubMenu` 菜单项 key 数组 | `string[]` | - |
 | defaultIndex | 初始选中的菜单项 key 数组 | `string` | - |
 | mode | 菜单类型，现在支持水平、和内嵌模式三种 | `horizontal`、`vertical` | `horizontal` |
@@ -92,15 +92,15 @@ export default () => (
 
 ### Menu.Item
 
-|   参数   |      说明       |   类型    | 默认值 |
-| :------: | :-------------: | :-------: | :----: |
-| disabled |    是否禁用     | `boolean` | false  |
-|  index   | item 的唯一标志 | `string`  |   -    |
+| 参数     | 说明            | 类型      | 默认值  |
+| -------- | --------------- | --------- | ------- |
+| disabled | 是否禁用        | `boolean` | `false` |
+| index    | item 的唯一标志 | `string`  | -       |
 
 ### Menu.SubMenu
 
-|   参数   |      说明      |             类型              | 默认值 |
-| :------: | :------------: | :---------------------------: | :----: |
-| children | 子菜单的菜单项 | Array&lt;MenuItem \| SubMenu> |   -    |
-|  index   |    唯一标志    |           `string`            |   -    |
-|  title   |   子菜单项值   |          `ReactNode`          |   -    |
+| 参数     | 说明           | 类型                         | 默认值 |
+| -------- | -------------- | ---------------------------- | ------ |
+| children | 子菜单的菜单项 | `Array<MenuItem \| SubMenu>` | -      |
+| index    | 唯一标志       | `string`                     | -      |
+| title    | 子菜单项值     | `ReactNode`                  | -      |

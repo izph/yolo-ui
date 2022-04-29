@@ -146,8 +146,8 @@ export default () => {
 
 ### API
 
-| 参数         | 说明                                  | 类型            |
-| ------------ | ------------------------------------- | --------------- |
-| onSearch     | 搜索补全项的时候调用                  | function(value) |
-| onSelect     | 被选中时调用，参数为选中项的 value 值 | function(value) |
-| renderOption | 自定义渲染下拉选项                    | function(value) |
+| 参数         | 说明                                  | 类型              |
+| ------------ | ------------------------------------- | ----------------- |
+| onSearch     | 搜索补全项的时候调用                  | `function(value)` |
+| onSelect     | 被选中时调用，参数为选中项的 value 值 | `function(value)` |
+| renderOption | 自定义渲染下拉选项                    | `function(value)` |
