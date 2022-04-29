@@ -1,8 +1,12 @@
-export type SwitchSize = 'lg' | 'md' | 'sm';
+export type SwitchSize = 'default' | 'sm';
 
+export type SwitchChangeEventHandler = (
+  checked: boolean,
+  event: React.MouseEvent<HTMLButtonElement> | React.KeyboardEvent<HTMLButtonElement>,
+) => void;
 export interface SwitchProps {
   /* 主题颜色 */
-  color?: string;
+  theme?: string;
   /** 是否被选中 */
   checked?: boolean;
   /* 用户自定义类名 */
@@ -15,8 +19,6 @@ export interface SwitchProps {
   onText?: string;
   /** 关闭状态的文本 */
   offText?: string;
-  /** 对外暴露的点击事件 */
-  onClick?: () => void;
-  /** 状态切换时的文本 */
-  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  /** 状态切换时的回调 */
+  onChange?: SwitchChangeEventHandler;
 }
