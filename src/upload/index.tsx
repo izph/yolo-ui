@@ -24,7 +24,9 @@ export const Upload: FC<UploadProps> = (props) => {
     children,
     drag,
   } = props;
+  /** 指向input为file文件的dom元素 */
   const fileInput = useRef<HTMLInputElement>(null);
+  /** 存放文件的数组 */
   const [fileList, setFileList] = useState<UploadFile[]>(defaultFileList || []);
   // 更新filelist：更新的文件，文件的属性（可选）
   const updateFileList = (updateFile: UploadFile, updateObj: Partial<UploadFile>) => {

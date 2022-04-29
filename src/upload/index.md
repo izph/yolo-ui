@@ -22,7 +22,79 @@ nav:
 
 - 当需要使用拖拽交互时。
 
-### 基本使用
+## 基本使用
+
+```tsx
+import React from 'react';
+import { Upload, Button } from 'yolo-ui';
+
+export default () => {
+  const checkFileSize = (file: File) => {
+    if (Math.round(file.size / 1024) > 50) {
+      alert('file too big');
+      return false;
+    }
+    return true;
+  };
+  return (
+    <Upload
+      action="https://www.mocky.io/v2/5cc8019d300000980a055e76"
+      //   beforeUpload={checkFileSize}
+    >
+      <Button> Upload File</Button>
+    </Upload>
+  );
+};
+```
+
+### 已上传的文件列表
+
+```tsx
+import React from 'react';
+import { Upload, Button } from 'yolo-ui';
+
+export default () => {
+  const checkFileSize = (file: File) => {
+    if (Math.round(file.size / 1024) > 50) {
+      alert('file too big');
+      return false;
+    }
+    return true;
+  };
+  const defaultFileList = [
+    {
+      uid: '123321',
+      name: 'xxx.png',
+      status: 'success',
+      size: 50,
+    },
+    {
+      uid: '123456',
+      name: 'yyy.png',
+      status: 'success',
+      size: 50,
+    },
+    {
+      uid: '123654',
+      name: 'zzz.png',
+      status: 'error',
+      size: 50,
+    },
+  ];
+
+  return (
+    <Upload
+      action="https://www.mocky.io/v2/5cc8019d300000980a055e76"
+      //   beforeUpload={checkFileSize}
+      defaultFileList={defaultFileList}
+    >
+      <Button> Upload File</Button>
+    </Upload>
+  );
+};
+```
+
+### 拖拽上传
 
 ```tsx
 import React from 'react';
@@ -40,116 +112,34 @@ export default () => {
     <Upload
       action="https://www.mocky.io/v2/5cc8019d300000980a055e76"
       //   beforeUpload={checkFileSize}
+      drag
     >
-      Upload File
+      Click or drag file to this area to upload
     </Upload>
   );
 };
 ```
 
-### 自定义渲染下拉选项
+## API
 
-```tsx
-import React from 'react';
-import { AutoComplete } from 'yolo-ui';
+| 参数 | 说明 | 类型 |
+| --- | --- | --- | --- | --- | --- |
+| accept | 接受上传的文件类型 | `string` | - |
+| action | 上传的地址 | `string | (file) => Promise<string>` | - |
+| beforeUpload | 上传文件之前的钩子，参数为上传的文件，若返回 false 则停止上传。支持返回一个 Promise 对象，Promise 对象 reject 时则停止上传，resolve 时开始上传（ resolve 传入 File 或 Blob 对象则上传 resolve 传入对象） | `(file, fileList) => boolean | Promise<File>` | - |
+| data | 上传所需额外参数或返回上传额外参数的方法 | `object | (file) => object | Promise<object>` | - |
+| drag | 是否支持拖拽上传 | `boolean` | `false` |
+| defaultFileList | 默认已经上传的文件列表 | `object[]` | - |
+| headers | 设置上传的请求头部 | `object` | - |
+| multiple | 是否支持多选文件 | `boolean` | `false` |
+| name | 发到后台的文件参数名 | `string` | `file` |
+| withCredentials | 上传请求时是否携带 cookie | `boolean` | `false` |
+| onChange | 上传文件改变时的状态 | `function(file)` | - |
+| onSuccess | 请求成功时的回调 | `(data, file) => void` | - |
+| onError | 请求失败时的回调 | `(data, file) => void` | - |
+| onProgress | 文件正在上传时，处理的回调 | `(percentage: number, file: File) => void` | - |
+| onRemove | 文件移除时执行的回调 | `(file: UploadFile) => void` | - |
 
-interface DataSourceObject {
-  value: string;
-}
+### UploadFile
 
-interface LakerPlayerProps {
-  value: string;
-  number: number;
-}
-
-export default () => {
-  const lakersWithNumber = [
-    { value: 'a', number: 0 },
-    { value: 'aa', number: 1 },
-    { value: 'aaa', number: 2 },
-    { value: 'b', number: 3 },
-    { value: 'bb', number: 4 },
-    { value: 'bbb', number: 5 },
-    { value: 'c', number: 6 },
-    { value: 'cc', number: 7 },
-    { value: 'ccc', number: 8 },
-    { value: 'd', number: 9 },
-    { value: 'dd', number: 10 },
-    { value: 'ddd', number: 11 },
-  ];
-
-  const handleSearch = (query: string) =>
-    lakersWithNumber.filter((player) => player.value.includes(query));
-
-  const renderOption = (item: DataSourceType) => {
-    const itemWithNumber = item as DataSourceType<LakerPlayerProps>;
-    return (
-      <>
-        <b>字母: {itemWithNumber.value}</b>
-        <span>数字编号: {itemWithNumber.number}</span>
-      </>
-    );
-  };
-
-  return (
-    <div>
-      <div>请输入 a 或 b 或 c 或 d</div>
-      <AutoComplete onSearch={handleSearch} renderOption={renderOption} />
-    </div>
-  );
-};
-```
-
-### ajax 请求下拉选项
-
-```tsx
-import React from 'react';
-import { AutoComplete } from 'yolo-ui';
-
-interface DataSourceObject {
-  value: string;
-}
-
-interface GithubUserProps {
-  login: string;
-  url: string;
-  // eslint-disable-next-line camelcase
-  avatar_url: string;
-}
-
-export default () => {
-  const renderOption = (item: DataSourceType) => {
-    const itemWithGithub = item as DataSourceType<GithubUserProps>;
-    return (
-      <>
-        <b>Name: {itemWithGithub.value}</b>
-        <span>url: {itemWithGithub.url}</span>
-      </>
-    );
-  };
-  const handleSearch = (query: string) =>
-    fetch(`https://api.github.com/search/users?q=${query}`)
-      .then((res) => res.json())
-      .then(({ items }) => {
-        if (typeof items !== 'undefined') {
-          return items.slice(0, 10).map((item: any) => ({ value: item.login, ...item }));
-        }
-        return [];
-      });
-
-  return (
-    <div>
-      <div>请输入任意 Github 用户名</div>
-      <AutoComplete onSearch={handleSearch} renderOption={renderOption} />
-    </div>
-  );
-};
-```
-
-### API
-
-| 参数         | 说明               | 类型            |
-| ------------ | ------------------ | --------------- | -------------------------- | --- |
-| accept       | 接受上传的文件类型 | `string`        | -                          |
-| action       | 上传的地址         | `string         | (file) => Promise<string>` | -   |
-| renderOption | 自定义渲染下拉选项 | function(value) |
+| uid | 唯一标识符，不设置时会自动生成 | `string` | - | | size | 原生 file 类型的大小 | `number` | - | | name | 文件名 | `string` | - | | status | 上传状态，不同状态展示颜色也会有所不同 | `ready | success | error | uploading` | - | | percent | 上传进度，百分比 | `number` | - | | raw | 元素文件信息 | `File` | - | | response | 成功信息 | `any` | - | | error | 失败信息 | `any` | - |
