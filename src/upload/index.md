@@ -29,7 +29,7 @@ import React from 'react';
 import { Upload, Button } from 'yolo-ui';
 
 export default () => {
-  const checkFileSize = (file: File) => {
+  const checkFileSize = (file) => {
     if (Math.round(file.size / 1024) > 50) {
       alert('file too big');
       return false;
@@ -47,14 +47,14 @@ export default () => {
 };
 ```
 
-### 已上传的文件列表
+## 已上传的文件列表
 
 ```tsx
 import React from 'react';
 import { Upload, Button } from 'yolo-ui';
 
 export default () => {
-  const checkFileSize = (file: File) => {
+  const checkFileSize = (file) => {
     if (Math.round(file.size / 1024) > 50) {
       alert('file too big');
       return false;
@@ -94,14 +94,14 @@ export default () => {
 };
 ```
 
-### 拖拽上传
+## 拖拽上传
 
 ```tsx
 import React from 'react';
 import { Upload } from 'yolo-ui';
 
 export default () => {
-  const checkFileSize = (file: File) => {
+  const checkFileSize = (file) => {
     if (Math.round(file.size / 1024) > 50) {
       alert('file too big');
       return false;
@@ -122,11 +122,11 @@ export default () => {
 
 ## API
 
-| 参数 | 说明 | 类型 |
+| 参数 | 说明 | 类型 | 默认 |
 | --- | --- | --- | --- | --- | --- |
 | accept | 接受上传的文件类型 | `string` | - |
-| action | 上传的地址 | `string | (file) => Promise<string>` | - |
-| beforeUpload | 上传文件之前的钩子，参数为上传的文件，若返回 false 则停止上传。支持返回一个 Promise 对象，Promise 对象 reject 时则停止上传，resolve 时开始上传（ resolve 传入 File 或 Blob 对象则上传 resolve 传入对象） | `(file, fileList) => boolean | Promise<File>` | - |
+| action | 上传的地址 | `string \| (file) => Promise<string>` | - |
+| beforeUpload | `上传文件之前的钩子，参数为上传的文件，若返回 false 则停止上传。支持返回一个 Promise 对象，Promise 对象 reject 时则停止上传，resolve 时开始上传（resolve 传入File或Blob 对象则上传 resolve 传入对象）` | `(file, fileList) => boolean \| Promise<File>` | - |
 | data | 上传所需额外参数或返回上传额外参数的方法 | `object | (file) => object | Promise<object>` | - |
 | drag | 是否支持拖拽上传 | `boolean` | `false` |
 | defaultFileList | 默认已经上传的文件列表 | `object[]` | - |
@@ -142,4 +142,13 @@ export default () => {
 
 ### UploadFile
 
-| uid | 唯一标识符，不设置时会自动生成 | `string` | - | | size | 原生 file 类型的大小 | `number` | - | | name | 文件名 | `string` | - | | status | 上传状态，不同状态展示颜色也会有所不同 | `ready | success | error | uploading` | - | | percent | 上传进度，百分比 | `number` | - | | raw | 元素文件信息 | `File` | - | | response | 成功信息 | `any` | - | | error | 失败信息 | `any` | - |
+| 参数 | 说明 | 类型 | 默认 |
+| --- | --- | --- | --- |
+| uid | 唯一标识符，不设置时会自动生成 | `string` | - |
+| size | 原生 `file` 类型的大小 | `number` | - |
+| name | 文件名 | `string` | - |
+| status | 上传状态，不同状态展示颜色也会有所不同 | `ready \| success \| error \| uploading` | - |
+| percent | 上传进度，百分比 | `number` | - |
+| raw | 元素文件信息 | `File` | - |
+| response | 成功信息 | `any` | - |
+| error | 失败信息 | `any` | - |

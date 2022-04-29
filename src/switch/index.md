@@ -123,12 +123,12 @@ export default () => {
 
 ## API
 
-|   参数   |         说明         |                    类型                    | 默认值  |
-| :------: | :------------------: | :----------------------------------------: | :-----: |
-|  theme   |     开关主题颜色     |                  `string`                  | `#09f`  |
-| checked  |      是否被选中      |                 `boolean`                  | `false` |
-|   size   |       开关大学       |              `default \| sm`               |    -    |
-| disabled |      是否被禁用      |                 `boolean`                  | `false` |
-|  onText  |    开启状态的文本    |           `string \| ReactNode`            |    -    |
-| offText  |    关闭状态的文本    |           `string \| ReactNode`            |    -    |
-| onChange | 选中值发生变化时触发 | `function(checked: boolean, event: Event)` |    -    |
+| 参数     | 说明                 | 类型                                       | 默认值  |
+| -------- | -------------------- | ------------------------------------------ | ------- |
+| theme    | 开关主题颜色         | `string`                                   | `#09f`  |
+| checked  | 是否被选中           | `boolean`                                  | `false` |
+| size     | 开关大学             | `default \| sm`                            | -       |
+| disabled | 是否被禁用           | `boolean`                                  | `false` |
+| onText   | 开启状态的文本       | `string \| ReactNode`                      | -       |
+| offText  | 关闭状态的文本       | `string \| ReactNode`                      | -       |
+| onChange | 选中值发生变化时触发 | `function(checked: boolean, event: Event)` | -       |
