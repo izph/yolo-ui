@@ -40,9 +40,10 @@ export const Upload: FC<UploadProps> = (props) => {
       });
     });
   };
+
   const handleClick = () => {
     if (fileInput.current) {
-      // 手动触发input文件的点击事件
+      // 手动触发input文件的点击事件，上传文件
       fileInput.current.click();
     }
   };
@@ -57,6 +58,7 @@ export const Upload: FC<UploadProps> = (props) => {
       fileInput.current.value = '';
     }
   };
+  // 移除文件
   const handleRemove = (file: UploadFile) => {
     setFileList((prevList) => {
       return prevList.filter((item) => item.uid !== file.uid);
@@ -73,6 +75,11 @@ export const Upload: FC<UploadProps> = (props) => {
       if (!beforeUpload) {
         post(file);
       } else {
+        /**
+         * 上传文件之前的钩子，参数为上传的文件，若返回 false 则停止上传。
+         * 支持返回一个 Promise 对象，Promise 对象 reject 时则停止上传，
+         *  resolve 时开始上传（ resolve 传入 File则上传 resolve 传入对象
+         */
         const result = beforeUpload(file);
         if (result && result instanceof Promise) {
           result.then((processedFile) => {
@@ -84,6 +91,7 @@ export const Upload: FC<UploadProps> = (props) => {
       }
     });
   };
+  // 发送文件
   const post = (file: File) => {
     let _file: UploadFile = {
       uid: Date.now() + 'upload-file',
@@ -113,13 +121,15 @@ export const Upload: FC<UploadProps> = (props) => {
         },
         // axios内置的属性
         withCredentials,
-        // axios内置的显示进度的方法
+        // axios内置的显示进度的方法，允许为上传处理进度事件
+        // 文件正在上传时执行的回调
         onUploadProgress: (e) => {
           let percentage = Math.round((e.loaded * 100) / e.total) || 0;
           if (percentage < 100) {
             // 更新百分比，更新状态
             updateFileList(_file, { percent: percentage, status: 'uploading' });
             if (onProgress) {
+              // 当前百分比，文件
               onProgress(percentage, file);
             }
           }
