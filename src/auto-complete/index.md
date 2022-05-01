@@ -16,7 +16,7 @@ nav:
 
 - 需要一个输入框而不是选择器。
 
-- 需要输入建议/辅助提示。
+- 需要输入建议或者辅助提示。
 
 和 Select 的区别是：
 
@@ -31,14 +31,31 @@ import React from 'react';
 import { AutoComplete } from 'yolo-ui';
 
 export default () => {
-  const strArr = ['a', 'ab', 'aaa', 'b', 'bb', 'bbb', 'c', 'cc', 'ccc', 'd', 'dd', 'ddd'];
+  const strArr = [
+    '1',
+    '11',
+    '111',
+    '2',
+    '22',
+    '222',
+    '3',
+    '33',
+    '333',
+    '4',
+    '44',
+    '444',
+    '123',
+    '234',
+    '134',
+    '124',
+  ];
 
   const handleSearch = (query: string) =>
     strArr.filter((item) => item.includes(query)).map((item) => ({ value: item }));
 
   return (
     <div>
-      <div>请输入 a 或 b 或 c 或 d</div>
+      <div>请输入 1 或 2 或 3 或 4</div>
       <AutoComplete onSearch={handleSearch} />
     </div>
   );
@@ -55,13 +72,13 @@ interface DataSourceObject {
   value: string;
 }
 
-interface LakerPlayerProps {
+interface testDataProps {
   value: string;
   number: number;
 }
 
 export default () => {
-  const lakersWithNumber = [
+  const searchData = [
     { value: 'a', number: 0 },
     { value: 'aa', number: 1 },
     { value: 'aaa', number: 2 },
@@ -76,15 +93,14 @@ export default () => {
     { value: 'ddd', number: 11 },
   ];
 
-  const handleSearch = (query: string) =>
-    lakersWithNumber.filter((player) => player.value.includes(query));
+  const handleSearch = (query: string) => searchData.filter((item) => item.value.includes(query));
 
   const renderOption = (item: DataSourceType) => {
-    const itemWithNumber = item as DataSourceType<LakerPlayerProps>;
+    const searchDataItem = item as DataSourceType<testDataProps>;
     return (
       <>
-        <b>字母: {itemWithNumber.value}</b>
-        <span>数字编号: {itemWithNumber.number}</span>
+        <b>字母: {searchDataItem.value}</b>
+        <span>数字编号: {searchDataItem.number}</span>
       </>
     );
   };
@@ -146,8 +162,18 @@ export default () => {
 
 ### API
 
-| 参数         | 说明                                  | 类型              |
-| ------------ | ------------------------------------- | ----------------- |
-| onSearch     | 搜索补全项的时候调用                  | `function(value)` |
-| onSelect     | 被选中时调用，参数为选中项的 value 值 | `function(value)` |
-| renderOption | 自定义渲染下拉选项                    | `function(value)` |
+| 参数 | 说明 | 类型 |
+| --- | --- | --- |
+| onSearch | 搜索补全项的时候调用 | `(str: string) => DataSourceType[] \| Promise<DataSourceType[]>` |
+| onSelect | 被选中时调用，参数为选中项的 value 值 | `(item: DataSourceType) => void` |
+| renderOption | 自定义渲染下拉选项 | `(item: DataSourceType) => ReactElement` |
+
+#### 说明
+
+```ts
+export interface DataSourceObject {
+  value: string;
+}
+
+export type DataSourceType<T = {}> = T & DataSourceObject;
+```

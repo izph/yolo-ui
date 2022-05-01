@@ -112,4 +112,4 @@ export default () => (
 | message     | 警告提示内容             | `ReactNode`                                   | -       |
 | description | 警告提示的辅助性文字介绍 | `ReactNode`                                   | -       |
 | closable    | 是否显示关闭按钮         | `boolean`                                     | `false` |
-| onClose     | 关闭时触发的回调函数     | `void`                                        | -       |
+| onClose     | 关闭时触发的回调函数     | `(e: React.MouseEvent) => void`               | -       |

@@ -45,9 +45,7 @@ export default () => (
     <br />
     <Progress theme="dark" percent={80} />
     <br />
-    <Progress theme="primary" percent={90} />
-    <br />
-    <Progress theme="primary" percent={90} strokeHeight={30} />
+    <Progress theme="primary" percent={100} />
   </div>
 );
 ```

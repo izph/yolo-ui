@@ -123,11 +123,11 @@ export default () => {
 ## API
 
 | 参数 | 说明 | 类型 | 默认 |
-| --- | --- | --- | --- | --- | --- |
+| --- | --- | --- | --- |
 | accept | 接受上传的文件类型 | `string` | - |
-| action | 上传的地址 | `string \| (file) => Promise<string>` | - |
-| beforeUpload | `上传文件之前的钩子，参数为上传的文件，若返回 false 则停止上传。支持返回一个 Promise 对象，Promise 对象 reject 时则停止上传，resolve 时开始上传（resolve 传入File或Blob 对象则上传 resolve 传入对象）` | `(file, fileList) => boolean \| Promise<File>` | - |
-| data | 上传所需额外参数或返回上传额外参数的方法 | `object | (file) => object | Promise<object>` | - |
+| action | 上传的地址 | `string或者(file) => Promise<string>` | - |
+| beforeUpload | 上传文件之前的钩子，参数为上传的文件，若返回 false 则停止上传。支持返回一个 Promise 对象 | `(file, fileList) => boolean 或者Promise<File>` | - |
+| data | 上传所需额外参数或返回上传额外参数的方法 | `object或者(file) => object或者Promise<object>` | - |
 | drag | 是否支持拖拽上传 | `boolean` | `false` |
 | defaultFileList | 默认已经上传的文件列表 | `object[]` | - |
 | headers | 设置上传的请求头部 | `object` | - |

@@ -86,7 +86,7 @@ export default () => (
 | --- | --- | --- | --- |
 | defaultOpenKeys | 初始展开的 `SubMenu` 菜单项 key 数组 | `string[]` | - |
 | defaultIndex | 初始选中的菜单项 key 数组 | `string` | - |
-| mode | 菜单类型，现在支持水平、和内嵌模式三种 | `horizontal`、`vertical` | `horizontal` |
+| mode | 菜单类型，现在支持水平、垂直模式两种 | `horizontal`、`vertical` | `horizontal` |
 | style | 根节点样式 | `CSSProperties` | - |
 | onClick | 点击 MenuItem 调用此函数 | `function({ item, key, keyPath, domEvent })` | - |
 
