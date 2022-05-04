@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    "outDir": "dist", // 编译之后的存放路径
+    "module": "ESNext",
+    "target": "ES5", // 指定编译之后的目标版本
+    "declaration": true, // 为每一个js文件生成 .d.ts类型声明文件
+    "jsx": "react",
+    "moduleResolution": "Node", // classic 和 Node
+    "allowSyntheticDefaultImports": true //  true 支持 defalut 引入的方式
+  },
+  "include": ["src/"],
+  "exclude": ["src/**/style", "src/**/*.md"]
+}
