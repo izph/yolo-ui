@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 
-import Icon from '../Icon/index';
-import Progress from '../Progress/index';
+import Icon from '../icon/index';
+import Progress from '../progress/index';
 import { UploadListProps } from './interface';
 import './style/index';
 

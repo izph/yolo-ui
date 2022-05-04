@@ -1,7 +1,27 @@
 {
-  "private": true,
+  "private": false,
   "name": "yolo-ui",
   "version": "1.0.0",
+  "description": "A React components library",
+  "title": "YoLo UI",
+  "author": "iZph",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "keywords": [
+    "yolo-ui",
+    "component",
+    "design",
+    "frontend",
+    "react",
+    "react-component",
+    "ui"
+  ],
+  "homepage": "https://github.com/izph/yolo-ui",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/izph/yolo-ui"
+  },
+  "license": "MIT",
   "scripts": {
     "start": "dumi dev",
     "docs:build": "dumi build",

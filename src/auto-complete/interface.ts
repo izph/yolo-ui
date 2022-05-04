@@ -1,5 +1,5 @@
 import React, { ReactElement } from 'react';
-import { InputProps } from '../Input/interface';
+import { InputProps } from '../input/interface';
 
 export interface DataSourceObject {
   value: string;

@@ -1,8 +1,8 @@
 import React, { FC, KeyboardEvent, ChangeEvent, useState, useEffect, useRef } from 'react';
 import classNames from 'classnames';
 import { LoadingOutlined } from '@ant-design/icons';
-import Transition from '../Transition/index';
-import Input from '../Input/index';
+import Transition from '../transition/index';
+import Input from '../input/index';
 import { AutoCompleteProps, DataSourceType } from './interface';
 import useDebounce from '../hooks/useDebounce';
 import useClickOutside from '../hooks/useClickOutside';

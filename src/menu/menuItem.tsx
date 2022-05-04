@@ -1,7 +1,7 @@
 import React, { FC, useContext } from 'react';
 import classNames from 'classnames';
 import { MenuItemProps } from './interface';
-import MenuContext from './MenuContext';
+import MenuContext from './menuContext';
 
 /* 
   index: 来源父组件生成 | 用户自定义

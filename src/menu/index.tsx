@@ -1,9 +1,9 @@
 import React, { FC, useState } from 'react';
 import classNames from 'classnames';
 import { MenuProps, MenuItemProps, MenuContextProps, SubMenuProps } from './interface';
-import MenuContext from './MenuContext';
-import MenuItem from './MenuItem';
-import SubMenu from './SubMenu';
+import MenuContext from './menuContext';
+import MenuItem from './menuItem';
+import SubMenu from './subMenu';
 import './style/index';
 
 const RootMenu: FC<MenuProps> = ({

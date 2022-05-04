@@ -1,6 +1,6 @@
 import React, { FC, FunctionComponentElement, MouseEvent, useState } from 'react';
 import classNames from 'classnames';
-import TabPane from './TabPane';
+import TabPane from './tabPane';
 import { TabsProps, TabPaneProps } from './interface';
 import './style/index';
 
