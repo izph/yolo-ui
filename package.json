@@ -27,9 +27,9 @@
   ],
   "scripts": {
     "start": "dumi dev",
-    "clean": "rimraf ./docs-dist",
+    "clean": "rimraf ./dist",
     "build-ts": "tsc -p tsconfig.build.json",
-    "build-css": "dart-sass ./src/style/index.less ./docs-dist/index.css",
+    "build-css": "lessc ./src/style/index.less ./dist/index.css",
     "docs:build": "dumi build",
     "docs:deploy": "gh-pages -d docs-dist",
     "build": "father-build",
@@ -64,7 +64,7 @@
     "prop-types": "^15.8.1",
     "react": "^17.0.2",
     "react-transition-group": "^4.4.2",
-    "typescript": "^4.6.3"
+    "typescript": "^4.3.5"
   },
   "devDependencies": {
     "@testing-library/jest-dom": "^5.15.1",
