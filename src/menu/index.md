@@ -27,10 +27,10 @@ export default () => {
       // mode="vertical"
       // defaultOpenKeys={['3']}
     >
-      <Menu.Item>菜单1</Menu.Item>
-      <Menu.Item>菜单2</Menu.Item>
-      <Menu.Item>菜单3</Menu.Item>
-      <Menu.Item>菜单4</Menu.Item>
+      <Menu.Item>Item 1</Menu.Item>
+      <Menu.Item>Item 2</Menu.Item>
+      <Menu.Item>Item 3</Menu.Item>
+      <Menu.Item>Item 4</Menu.Item>
     </Menu>
   );
 };
@@ -45,10 +45,10 @@ import React from 'react';
 import { Menu } from 'yolo-ui';
 export default () => (
   <Menu mode="vertical">
-    <Menu.Item>菜单1</Menu.Item>
-    <Menu.Item>菜单2</Menu.Item>
-    <Menu.Item>菜单3</Menu.Item>
-    <Menu.Item>菜单4</Menu.Item>
+    <Menu.Item>Item 1</Menu.Item>
+    <Menu.Item>Item 2</Menu.Item>
+    <Menu.Item>Item 3</Menu.Item>
+    <Menu.Item>Item 4</Menu.Item>
   </Menu>
 );
 ```
@@ -67,13 +67,13 @@ const { SubMenu } = Menu;
 
 export default () => (
   <Menu mode="vertical" defaultIndex="1-0" defaultOpenKeys={['1']}>
-    <Menu.Item>菜单1</Menu.Item>
-    <SubMenu title="菜单2">
-      <Menu.Item>菜单2-1</Menu.Item>
-      <Menu.Item>菜单2-2</Menu.Item>
+    <Menu.Item>Item 1</Menu.Item>
+    <SubMenu title="Item 2">
+      <Menu.Item>Option 1</Menu.Item>
+      <Menu.Item>Option 2</Menu.Item>
     </SubMenu>
-    <Menu.Item>菜单3</Menu.Item>
-    <Menu.Item>菜单4</Menu.Item>
+    <Menu.Item>Item 3</Menu.Item>
+    <Menu.Item>Item 4</Menu.Item>
   </Menu>
 );
 ```

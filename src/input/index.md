@@ -25,7 +25,7 @@ import { Input } from 'yolo-ui';
 
 export default () => (
   <div>
-    <Input placeholder="Basic usage" />
+    <Input placeholder="基本使用" />
   </div>
 );
 ```
@@ -84,12 +84,11 @@ export default () => (
 
 ```tsx
 import React from 'react';
-import { Input } from 'yolo-ui';
-// import { CaretDownOutlined } from '@ant-design/icons'
-// <Input icon={<CaretDownOutlined />} />
+import { Input, Icon } from 'yolo-ui';
+
 export default () => (
   <div>
-    <Input placeholder="Basic usage" />
+    <Input placeholder="基本使用" icon={<Icon icon="fa-arrow-down-long" />} />
   </div>
 );
 ```

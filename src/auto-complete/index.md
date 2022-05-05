@@ -99,8 +99,8 @@ export default () => {
     const searchDataItem = item as DataSourceType<testDataProps>;
     return (
       <>
-        <b>字母: {searchDataItem.value}</b>
-        <span>数字编号: {searchDataItem.number}</span>
+        <span>value值: {searchDataItem.value}</span>
+        <span style={{ marginLeft: '20px' }}>对应编号: {searchDataItem.number}</span>
       </>
     );
   };
@@ -114,7 +114,7 @@ export default () => {
 };
 ```
 
-### ajax 请求下拉选项
+### fetch 请求下拉选项
 
 ```tsx
 import React from 'react';

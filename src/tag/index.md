@@ -30,8 +30,8 @@ export default () => {
 
   return (
     <>
-      <Tag text="Tag1" closable onClose={handleClick} />
-      <Tag text="Tag2" closable={false} />
+      <Tag text="Tag1" />
+      <Tag text="Tag2" closable onClose={handleClick} />
     </>
   );
 };
@@ -45,9 +45,10 @@ import { Tag } from 'yolo-ui';
 
 export default () => (
   <>
-    <Tag text="Tag1" color="success" />
-    <Tag text="Tag2" color="warning" />
-    <Tag text="Tag3" color="danger" />
+    <Tag text="Tag-primary" color="primary" />
+    <Tag text="Tag-success" color="success" />
+    <Tag text="Tag-warning" color="warning" />
+    <Tag text="Tag-danger" color="danger" />
   </>
 );
 ```
@@ -60,9 +61,9 @@ import { Tag } from 'yolo-ui';
 
 export default () => (
   <>
-    <Tag text="Tag1" size="sm" />
-    <Tag text="Tag2" />
-    <Tag text="Tag3" size="lg" />
+    <Tag text="Tag-sm" size="sm" />
+    <Tag text="Tag" />
+    <Tag text="Tag-lg" size="lg" />
   </>
 );
 ```

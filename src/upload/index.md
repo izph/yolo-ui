@@ -88,7 +88,7 @@ export default () => {
       //   beforeUpload={checkFileSize}
       defaultFileList={defaultFileList}
     >
-      <Button> Upload File</Button>
+      <Button type="primary"> Upload File</Button>
     </Upload>
   );
 };

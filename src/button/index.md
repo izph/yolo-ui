@@ -23,14 +23,14 @@ import { Button } from 'yolo-ui';
 export default () => {
   return (
     <div id="button-demo-display-type">
-      <Button type="default">默认按钮</Button>
-      <Button type="primary">主要按钮</Button>
-      <Button type="info">信息按钮</Button>
-      <Button type="warning">警告按钮</Button>
-      <Button type="danger">危险按钮</Button>
-      <Button type="dashed">虚线按钮</Button>
+      <Button type="default">default</Button>
+      <Button type="primary">primary</Button>
+      <Button type="info">info</Button>
+      <Button type="warning">warning</Button>
+      <Button type="danger">danger</Button>
+      <Button type="dashed">dashed</Button>
       <Button type="link" href="https://github.com/izph">
-        链接按钮
+        link
       </Button>
     </div>
   );
@@ -74,14 +74,14 @@ export default () => {
   return (
     <div id="button-demo-display-size">
       <Button type="primary" disabled>
-        主要按钮
+        primary
       </Button>
       <Button type="danger" disabled>
-        危险按钮
+        danger
       </Button>
-      <Button disabled>默认按钮</Button>
+      <Button disabled>default</Button>
       <Button type="link" disabled>
-        链接按钮
+        link
       </Button>
     </div>
   );
