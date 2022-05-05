@@ -49,9 +49,9 @@ const SubMenu: React.FC<SubMenuProps> = (props) => {
   const handleEvents =
     mode !== 'vertical'
       ? {
-          onMouseEnter: (e: React.MouseEvent) => handleMouse(e, true),
-          onMouseLeave: (e: React.MouseEvent) => handleMouse(e, false),
-        }
+        onMouseEnter: (e: React.MouseEvent) => handleMouse(e, true),
+        onMouseLeave: (e: React.MouseEvent) => handleMouse(e, false),
+      }
       : {};
 
   /* 

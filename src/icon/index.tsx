@@ -2,7 +2,6 @@ import React from 'react';
 import classNames from 'classnames';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { IconProps } from './interface';
-import './style/index';
 
 const Icon: React.FC<IconProps> = (props) => {
   // icon-primary

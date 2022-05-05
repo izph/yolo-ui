@@ -4,7 +4,6 @@ import { MenuProps, MenuItemProps, MenuContextProps, SubMenuProps } from './inte
 import MenuContext from './menuContext';
 import MenuItem from './menuItem';
 import SubMenu from './subMenu';
-import './style/index';
 
 const RootMenu: FC<MenuProps> = ({
   className,

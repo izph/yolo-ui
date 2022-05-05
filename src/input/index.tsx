@@ -2,7 +2,6 @@ import React, { forwardRef } from 'react';
 import classNames from 'classnames';
 
 import { InputProps } from './interface';
-import './style/index';
 
 /* 
   React.forwardRef字面意思理解为转发Ref，它会创建一个React组件，这个组件能够将

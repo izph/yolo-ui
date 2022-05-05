@@ -3,7 +3,6 @@ import classNames from 'classnames';
 import CloseOutlined from '@ant-design/icons/CloseOutlined';
 import Transition from '../transition';
 import { TagProps } from './interface';
-import './style/index';
 
 export const Tag: FC<TagProps> = (props) => {
   const [hide, setHide] = useState<boolean>(false);

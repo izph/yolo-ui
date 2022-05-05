@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import classNames from 'classnames';
 import { SwitchProps } from './interface';
-import './style/index';
 
 /**
  * switch

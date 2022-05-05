@@ -7,8 +7,6 @@ import { AutoCompleteProps, DataSourceType } from './interface';
 import useDebounce from '../hooks/useDebounce';
 import useClickOutside from '../hooks/useClickOutside';
 
-import './style/index';
-
 const AutoComplete: FC<AutoCompleteProps> = ({
   value = '',
   onSearch,

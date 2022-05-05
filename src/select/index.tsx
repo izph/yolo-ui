@@ -15,7 +15,6 @@ import Transition from '../transition';
 import { SelectOptionProps, SelectProps } from './interface';
 import { SelectContext, ISelectContext } from './selectContext';
 import Option from './option';
-import './style/index';
 
 /**
  * defaultValue: string | string[] 默认选中的选项

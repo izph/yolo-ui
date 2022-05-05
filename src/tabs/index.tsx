@@ -2,7 +2,6 @@ import React, { FC, FunctionComponentElement, MouseEvent, useState } from 'react
 import classNames from 'classnames';
 import TabPane from './tabPane';
 import { TabsProps, TabPaneProps } from './interface';
-import './style/index';
 
 const RootTab: FC<TabsProps> = ({ className, defaultActiveKey, type, onTabClick, children }) => {
   const [activeKey, setActiveKey] = useState(defaultActiveKey);

@@ -1,7 +1,6 @@
 import React, { FC, useState, DragEvent } from 'react';
 import classNames from 'classnames';
 import { DraggerProps } from './interface';
-import './style/index';
 
 export const Dragger: FC<DraggerProps> = (props) => {
   const { onFile, children } = props;

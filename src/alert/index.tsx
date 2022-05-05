@@ -2,8 +2,7 @@ import React, { FC, useState } from 'react';
 import classNames from 'classnames';
 import { AlertProps } from './interface';
 import CloseOutlined from '@ant-design/icons/CloseOutlined';
-import Transition from '../transition/index';
-import './style/index';
+import Transition from '../transition';
 
 const Alert: FC<AlertProps> = ({ type, description, message, closable, onClose }) => {
   const [closed, setClosed] = useState(false);

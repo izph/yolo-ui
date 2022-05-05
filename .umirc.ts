@@ -9,7 +9,7 @@ export default defineConfig({
   logo: '/images/yoloui-logo.png',
   // publicPath: '/',
   outputPath: 'docs-dist',
-  base: '/yolo-ui',
+  // base: '/yolo-ui',
   mode: 'site',
   // more config: https://d.umijs.org/config
   devServer: {
@@ -31,17 +31,4 @@ export default defineConfig({
     },
   ],
   // styles: [`./src/style/index.less`, `./src/style/base.less`, `./src/style/color.less`],
-  // extraBabelPlugins: [
-  //   [
-  //     'import',
-  //     {
-  //       libraryName: 'yolo-ui',
-  //       camel2DashComponentName: false,
-  //       customStyleName: (name) => {
-  //         return `./style/index.less`; // 注意：这里 ./ 不可省略
-  //       },
-  //     },
-  //     'yolo-ui',
-  //   ],
-  // ],
 });

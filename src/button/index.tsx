@@ -2,8 +2,6 @@ import React from 'react';
 import classNames from 'classnames';
 import { ButtonProps } from './interface';
 
-import './style/index';
-
 const Button: React.FC<ButtonProps> = (props) => {
   // className用户自定义的
   const { type, className, disabled, size, children, href, ...restProps } = props;

@@ -3,7 +3,6 @@ import axios from 'axios';
 import UploadList from './uploadList';
 import Dragger from './dragger';
 import { UploadProps, UploadFile } from './interface';
-import './style/index';
 
 export const Upload: FC<UploadProps> = (props) => {
   const {

@@ -3,7 +3,7 @@ import classNames from 'classnames';
 import { CheckOutlined } from '@ant-design/icons';
 import { SelectContext } from './selectContext';
 import { SelectOptionProps } from './interface';
-import './style/index';
+
 export const Option: FC<SelectOptionProps> = ({ value, label, disabled, children, index }) => {
   const { onSelect, selectedValues, multiple } = useContext(SelectContext);
   /* 当前Option是否被选中 */

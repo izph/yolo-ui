@@ -1,6 +1,5 @@
 import React, { FC } from 'react';
 import { ProgressProps } from './interface';
-import './style/index';
 
 /* 
   percent: number 百分比
