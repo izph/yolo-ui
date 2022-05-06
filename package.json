@@ -1,7 +1,7 @@
 {
-  "private": false,
   "name": "yolo-ui",
-  "version": "1.0.0",
+  "version": "0.1.0",
+  "private": false,
   "description": "A React components library",
   "title": "YoLo UI",
   "author": "iZph",
@@ -40,8 +40,11 @@
     "deploy": "npm run docs:build && npm run docs:deploy",
     "prettier": "prettier --write \"**/*.{js,jsx,tsx,ts,less,md,json}\"",
     "test": "umi-test",
+    "lint": "npm run lint:eslint && npm run lint:stylelint",
+    "lint:eslint": "eslint --ext ts,tsx,js src",
+    "lint:stylelint": "stylelint **/*.{html,css,less} --fix",
     "test:coverage": "umi-test --coverage",
-    "prepublishOnly": "npm run build"
+    "prepublishOnly": "npm run build:lib"
   },
   "gitHooks": {
     "pre-commit": "lint-staged"
@@ -53,6 +56,10 @@
     "*.ts?(x)": [
       "prettier --parser=typescript --write"
     ]
+  },
+  "peerDependencies": {
+    "react": "≥16.8.0",
+    "react-dom": "≥16.8.0"
   },
   "dependencies": {
     "@ant-design/icons": "^4.7.0",

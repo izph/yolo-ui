@@ -7,11 +7,11 @@ node_modules
 /yarn-error.log
 /yarn.lock
 /package-lock.json
-/dist
 
 # production
 /es
 /docs-dist
+/dist
 
 # misc
 .DS_Store
