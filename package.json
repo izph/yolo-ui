@@ -34,7 +34,7 @@
     "build:lib": "npm run clean && npm run build-ts && npm run build-css",
     "build-ts": "tsc -p tsconfig.build.json",
     "build-css": "lessc ./src/style/index.less ./dist/index.css",
-    "docs:build": "dumi build",
+    "docs:build": "rimraf ./docs-dist && dumi build",
     "docs:deploy": "gh-pages -d docs-dist",
     "build": "father-build",
     "deploy": "npm run docs:build && npm run docs:deploy",

@@ -7,9 +7,9 @@ export default defineConfig({
   title: 'Yolo UI',
   favicon: '/images/yoloui-logo.png',
   logo: '/images/yoloui-logo.png',
-  // publicPath: '/',
+  // publicPath: './',
   outputPath: 'docs-dist',
-  // base: '/yolo-ui',
+  base: './',
   mode: 'site',
   // more config: https://d.umijs.org/config
   devServer: {
