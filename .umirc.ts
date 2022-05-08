@@ -1,17 +1,14 @@
 import { defineConfig } from 'dumi';
 
-// 按需引入babel-plugin-import
-
 // dumi配置文件
 export default defineConfig({
   title: 'Yolo UI',
-  favicon: '/images/yoloui-logo.png',
-  logo: '/images/yoloui-logo.png',
+  favicon: 'https://img.icons8.com/nolan/80/yolo.png',
+  logo: 'https://img.icons8.com/nolan/80/yolo.png',
   // publicPath: './',
   outputPath: 'docs-dist',
   base: './',
   mode: 'site',
-  // more config: https://d.umijs.org/config
   devServer: {
     port: 8888,
   },
@@ -20,9 +17,6 @@ export default defineConfig({
     '@c-primary': '#4080ff',
   },
   exportStatic: {}, // 将所有路由输出为 HTML 目录结构，以免刷新页面时 404
-  // resolve: {
-  //   includes: ['docs', 'components'],
-  // },
   navs: [
     null,
     {
@@ -30,5 +24,4 @@ export default defineConfig({
       path: 'https://github.com/izph/yolo-ui',
     },
   ],
-  // styles: [`./src/style/index.less`, `./src/style/base.less`, `./src/style/color.less`],
 });
