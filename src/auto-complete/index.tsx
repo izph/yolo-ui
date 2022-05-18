@@ -1,4 +1,4 @@
-import React, { FC, KeyboardEvent, ChangeEvent, useState, useEffect, useRef } from 'react';
+import React, { FC, KeyboardEvent, ChangeEvent, useState, useEffect, useCallback, useRef } from 'react';
 import classNames from 'classnames';
 import { LoadingOutlined } from '@ant-design/icons';
 import Transition from '../transition/index';
@@ -16,6 +16,9 @@ const AutoComplete: FC<AutoCompleteProps> = ({
 }) => {
   // 用户输入的value
   const [inputValue, setInputValue] = useState(value as string);
+  // 记录是否聚焦
+  const [focused, setFocused] = useState(false);
+
   // 显示下拉选项
   const [showDropdown, setShowDropdown] = useState(false);
   // 数据加载时的状态
@@ -38,7 +41,7 @@ const AutoComplete: FC<AutoCompleteProps> = ({
   });
 
   useEffect(() => {
-    if (debouncedValue && triggerSearch.current) {
+    if (debouncedValue && focused && triggerSearch.current) {
       setOptions([]);
       const result = onSearch(debouncedValue);
       if (result instanceof Promise) {
@@ -62,7 +65,7 @@ const AutoComplete: FC<AutoCompleteProps> = ({
       setShowDropdown(false);
     }
     setHighlightIndex(-1);
-  }, [debouncedValue, onSearch]);
+  }, [debouncedValue, onSearch, focused]);
 
   // input输入框发生变化
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -76,6 +79,7 @@ const AutoComplete: FC<AutoCompleteProps> = ({
     // 把item填充，清空下拉菜单
     setInputValue(item.value);
     setShowDropdown(false);
+    setFocused(false);
     if (onSelect) {
       onSelect(item);
     }
@@ -144,9 +148,24 @@ const AutoComplete: FC<AutoCompleteProps> = ({
     </Transition>
   );
 
+  const handleFocus = useCallback(() => {
+    setFocused(true);
+    triggerSearch.current = true;
+  }, [])
+
+  const handleBlur = useCallback(() => {
+    setFocused(false);
+  }, [])
+
   return (
     <div className="yolo-auto-complete" ref={dropdownRef}>
-      <Input value={inputValue} onChange={handleChange} onKeyDown={handleKeyDown} {...restProps} />
+      <Input
+        value={inputValue}
+        onChange={handleChange}
+        onKeyDown={handleKeyDown}
+        onFocus={handleFocus}
+        onBlur={handleBlur}
+        {...restProps} />
       {generateDropdown()}
     </div>
   );

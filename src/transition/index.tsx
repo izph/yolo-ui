@@ -8,12 +8,21 @@ const Transition: FC<TransitionProps> = ({
   wrapper, // 方法被包裹元素设置了transition属性冲突，在外层加div不覆盖
   children,
   ...restProps
-}) => (
-  <CSSTransition classNames={classNames || animation} {...restProps}>
-    {wrapper ? <div>children</div> : children}
-  </CSSTransition>
-);
+}) => {
+  /** 
+   * timeout 属性可以指定对应值的动画时间  timeout={{ enter: 300, exit: 500}}
+  */
+  return (
+    <CSSTransition classNames={classNames || animation} {...restProps}>
+      {wrapper ? <div>children</div> : children}
+    </CSSTransition>
+  );
+}
 
+/** 
+ *  unmountOnExit | 在元素退场时，自动把DOM也删除
+ *  appear | 意思是想让组件出现时就有动画效果
+*/
 Transition.defaultProps = {
   unmountOnExit: true,
   appear: true,

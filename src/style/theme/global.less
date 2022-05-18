@@ -82,24 +82,24 @@
 @font-size-root: null;
 
 // 字重 粗细
-@font-weight-lighter: lighter;
+@font-weight-lighter: lighter; // lighter 指定外观的重量小于继承的值
 @font-weight-light: 300;
-@font-weight-normal: 400;
-@font-weight-bold: 700;
-@font-weight-bolder: bolder;
+@font-weight-normal: 400; // 400等同于normal
+@font-weight-bold: 700; // 700等同于bold 
+@font-weight-bolder: bolder; // bolder指定外观的重量大于继承的值
 @font-weight-base: @font-weight-normal;
 
 // 字体颜色
-@font-color-normal: rgba(0, 0, 0, 0.85);
-@font-color-light: rgba(0, 0, 0, 0.65);
-@font-color-lighter: rgba(0, 0, 0, 0.45);
+@font-color-normal: rgba(0, 0, 0, 0.85); // alert的less
+@font-color-light: rgba(0, 0, 0, 0.65); // alert的less
+@font-color-lighter: rgba(0, 0, 0, 0.45); // input的less
 
 // 行高
-@line-height-base: 1.5;
-@line-height-lg: 2;
-@line-height-sm: 1.25;
+@line-height-base: 1.5; // normailze.less  设置数字，此数字会与当前的字体尺寸相乘来设置行间距
+@line-height-lg: 2; //  %: 基于当前字体尺寸的百分比行间距。
+@line-height-sm: 1.25; // inherit：规定应该从父元素继承line-height属性的值
 
-// 标题大小，h1-h6
+// 标题大小，h1-h6  在normailze.less使用
 @h1-font-size: @font-size-base * 2.5;
 @h2-font-size: @font-size-base * 2;
 @h3-font-size: @font-size-base * 1.75;
@@ -108,21 +108,22 @@
 // h6 默认是 1rem
 @h6-font-size: @font-size-base;
 
-// 链接link
-@link-color: @primary;
-@link-decoration: none;
-// darken是less内置的一个函数让颜色变暗，根据传入的颜色，让其变暗
-@link-hover-color: darken(@link-color, 15%);
-@link-hover-decoration: underline;
+// 链接link   normailze.less 初始化a标签
+@link-color: @primary; // a标签的默认颜色
+@link-decoration: none; // 去掉下划线，text-decoration: none;
+// darken 是less内置的一个函数让颜色变暗，根据传入的颜色，让其变暗
+@link-hover-color: darken(@link-color, 15%); // 降低一定15%的颜色亮度
+@link-hover-decoration: underline; // hover时显示下划线
 
 // body
-@body-bg: @white; // body背景颜色
-@body-color: @gray-900; // body字体颜色
+@body-bg: @white; // body背景颜色  白色
+@body-color: @gray-900; // body字体颜色  淡黑色
 @body-text-align: null;
 
 // Spacing
 @spacer: 1rem;
 
+// 默认的h1-h6 标题样式
 @headings-margin-bottom: @spacer / 2;
 @headings-font-family: null;
 @headings-font-style: null;
@@ -131,42 +132,15 @@
 @headings-color: null;
 
 // Paragraphs
-
+// P标签默认的外边距
 @paragraph-margin-bottom: 1rem;
 
-// 字体其他部分 heading list hr 等等
-@headings-margin-bottom: @spacer / 2;
-@headings-font-family: null;
-@headings-font-style: null;
-@headings-font-weight: 500;
-@headings-line-height: 1.2;
-@headings-color: null;
-
-@display1-size: 6rem;
-@display2-size: 5.5rem;
-@display3-size: 4.5rem;
-@display4-size: 3.5rem;
-
-@display1-weight: 300;
-@display2-weight: 300;
-@display3-weight: 300;
-@display4-weight: 300;
-@display-line-height: @headings-line-height;
-
-@lead-font-size: @font-size-base * 1.25;
-@lead-font-weight: 300;
 
 @small-font-size: 0.875em;
 
 @sub-sup-font-size: 0.75em;
 
 @text-muted: @gray-600;
-
-@initialism-font-size: @small-font-size;
-
-@blockquote-small-color: @gray-600;
-@blockquote-small-font-size: @small-font-size;
-@blockquote-font-size: @font-size-base * 1.25;
 
 @hr-color: inherit;
 @hr-height: 1px;
@@ -180,9 +154,6 @@
 
 @dt-font-weight: @font-weight-bold;
 
-@nested-kbd-font-weight: @font-weight-bold;
-
-@list-inline-padding: 0.5rem;
 
 @mark-bg: #fcf8e3;
 
@@ -202,14 +173,15 @@
 @border-width: 1px;
 @border-color: @gray-300;
 
-@border-radius: 0.25rem;
+@border-radius: 0.25rem; // button的less
 @border-radius-lg: 0.3rem;
 @border-radius-md: 0.25rem;
 @border-radius-sm: 0.2rem;
 
-// 不同类型的 box shadow
+// 不同类型的 box shadow  盒子阴影
 @box-shadow-sm: 0 0.125rem 0.25rem rgba(@black, 0.075);
 @box-shadow: 0 0.5rem 1rem rgba(@black, 0.15);
+@box-shadow-md: 0 0.5rem 1rem rgba(@black, 0.15);
 @box-shadow-lg: 0 1rem 3rem rgba(@black, 0.175);
 @box-shadow-inset: inset 0 1px 2px rgba(@black, 0.075);
 
@@ -270,8 +242,6 @@
   warning: @warning-100;
   error: @danger-100;
 }
-
-;
 
 @alert-padding-y: 0.75rem;
 @alert-padding-x: 1.25rem;

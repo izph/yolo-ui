@@ -25,7 +25,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>((props, ref) => {
     <div className={classes} style={style}>
       {prefix && <div className="yolo-input-group-prefix">{prefix}</div>}
       {icon && <div className="icon-wrapper">{icon}</div>}
-      <input ref={ref} className="yolo-input-inner" disabled={disabled} {...restProps} />
+      <input className="yolo-input-inner" ref={ref} disabled={disabled} {...restProps} />
       {suffix && <div className="yolo-input-group-suffix">{suffix}</div>}
     </div>
   );
