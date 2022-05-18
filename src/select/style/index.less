@@ -2,6 +2,7 @@
 
 .yolo-select {
     position: relative;
+    min-width: 100px;
 
     input {
         &[readonly] {
@@ -17,6 +18,13 @@
             cursor: not-allowed;
             opacity: 1;
         }
+    }
+
+    /** 
+        input输入框search属性下输入文字之后会在输入框最后出现一个默认样式的X，去掉这个X
+    */
+    input::-webkit-search-cancel-button {
+        display: none;
     }
 
     .yolo-input-wrapper {

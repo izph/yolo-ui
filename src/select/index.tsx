@@ -35,6 +35,8 @@ export const RootSelect: FC<SelectProps> = (props) => {
     disabled,
     onChange,
     onVisibleChange,
+    style,
+    ...restProps
   } = props;
   /* input dom */
   const inputRef = useRef<HTMLInputElement>(null);
@@ -43,7 +45,7 @@ export const RootSelect: FC<SelectProps> = (props) => {
   const containerWidth = useRef<number>(0);
   /* 选中的item */
   const [selectedValues, setSelectedValues] = useState<string[]>(
-    defaultValue instanceof Array ? defaultValue : [],
+    defaultValue instanceof Array ? defaultValue : []
   );
   /* 可选的数据，不包括disbaled的 */
   const [options, setOptions] = useState<string[]>([]);
@@ -52,6 +54,10 @@ export const RootSelect: FC<SelectProps> = (props) => {
   /* input的值 */
   const [value, setValue] = useState<string>(typeof defaultValue === 'string' ? defaultValue : '');
 
+
+  /** 
+   * 点击options触发的回调
+  */
   const handleOptionClick = (currSelectedValue: string, isSelected?: boolean) => {
     let updatedValues = [currSelectedValue];
     if (!multiple) {
@@ -80,32 +86,51 @@ export const RootSelect: FC<SelectProps> = (props) => {
   const handleInputValueChange = (e: ChangeEvent<HTMLInputElement>) => {
     const newValue = e.target.value.trim();
     if (multiple) return;
-    setValue(newValue);
+    // setValue(newValue);
   };
 
+  const handleFocus = (e: React.FocusEvent<HTMLInputElement>) => {
+    if (inputRef.current) {
+      inputRef.current.readOnly = true;
+    }
+  }
+
+  /**  
+    * 作用：初始化可选的item选项
+    * children是Select.Option，children是不变的
+  */
   useEffect(() => {
     const tempArr: string[] = [];
+    // console.log('children', children)
     React.Children.map(children, (child) => {
       const childElement = child as FunctionComponentElement<SelectOptionProps>;
-      console.log(childElement);
+      // console.log(childElement);
       const {
         // eslint-disable-next-line no-shadow
         props: { value = '', disabled },
       } = childElement;
       // value存在，且不是disbaled的
-      if (!disabled && value) tempArr.push(value);
+      if (!disabled && value) {
+        tempArr.push(value);
+      }
     });
-    /* 更新可选的item */
+    /* 初始化可选的item */
     setOptions(tempArr);
-  }, [children]);
+  }, []);
 
   useEffect(() => {
-    // focus input
+    /** 
+     * focus input
+     * inputRef.current就是当前的input元素
+    */
     if (inputRef.current) {
       /* 手动触发聚焦 */
       inputRef.current.focus();
+
       if (multiple && selectedValues.length > 0) {
+        // 多选 && 选择了子项目，则清空placeholder
         inputRef.current.placeholder = '';
+        console.log(placeholder)
       } else if (placeholder) {
         // 如果selectedValues为空，则显示placeholder
         inputRef.current.placeholder = placeholder;
@@ -182,9 +207,10 @@ export const RootSelect: FC<SelectProps> = (props) => {
   });
 
   return (
-    <div className={containerClass} ref={containerRef}>
+    <div className={containerClass} ref={containerRef} style={style}>
       <div className="yolo-select-input" onClick={handleClick}>
         <Input
+          type={"search"}
           ref={inputRef}
           placeholder={placeholder}
           value={value}
@@ -192,6 +218,7 @@ export const RootSelect: FC<SelectProps> = (props) => {
           onChange={handleInputValueChange}
           disabled={disabled}
           name={name}
+          onFocus={handleFocus}
           icon={<DownOutlined />}
           autoComplete="off"
         />

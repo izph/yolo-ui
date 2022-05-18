@@ -7,7 +7,6 @@ group:
   title: 反馈
   order: 7
 ---
-
 # Progress 进度条
 
 展示操作的当前进度。
@@ -71,7 +70,7 @@ export default () => (
 
 ## 是否显示百分比文字
 
-通过设置`showText`属性。
+通过设置 `showText`属性。
 
 ```tsx
 import React from 'react';
@@ -81,19 +80,19 @@ export default () => (
   <div>
     <Progress percent={30} showText={false} />
     <br />
-    <Progress theme="success" percent={40} strokeHeight={20} showText={false} />
+    <Progress theme="success" percent={40} strokeHeight={20} showText={true} />
     <br />
-    <Progress theme="warning" percent={60} strokeHeight={30} showText={false} />
+    <Progress theme="warning" percent={60} strokeHeight={30} showText={true} />
   </div>
 );
 ```
 
 ## API
 
-| 属性 | 说明 | 类型 | 默认值 |
-| --- | --- | --- | --- |
-| theme | 主题颜色 | `primary` \| `secondary` \| `success` \| `info` \| `warning` \| `danger` \| `dark`，非必填 | `primary` |
-| percent | 百分比 | `number` | - |
-| strokeHeight | 进度条高度 | `number` | - |
-| showText | 是否显示百分比文字 | `boolean` | `true` |
-| style | 自定义样式 | `React.CSSProperties` | - |
+| 属性         | 说明               | 类型                                                                                                     | 默认值      |
+| ------------ | ------------------ | -------------------------------------------------------------------------------------------------------- | ----------- |
+| theme        | 主题颜色           | `primary` \| `secondary` \| `success` \| `info` \| `warning` \| `danger` \| `dark`，非必填 | `primary` |
+| percent      | 百分比             | `number`                                                                                               | -           |
+| strokeHeight | 进度条高度         | `number`                                                                                               | -           |
+| showText     | 是否显示百分比文字 | `boolean`                                                                                              | `true`    |
+| style        | 自定义样式         | `React.CSSProperties`                                                                                  | -           |

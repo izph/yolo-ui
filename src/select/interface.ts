@@ -9,6 +9,8 @@ export interface SelectProps {
   multiple?: boolean;
   /** input 的 name 属性 */
   name?: string;
+  /** 自定义样式 */
+  style?: React.CSSProperties;
   /** 选中值发生变化时触发 */
   onChange?: (selectedValue: string, selectedValues: string[]) => void;
   /** 下拉框出现/隐藏时触发 */

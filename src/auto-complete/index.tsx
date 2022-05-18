@@ -18,7 +18,6 @@ const AutoComplete: FC<AutoCompleteProps> = ({
   const [inputValue, setInputValue] = useState(value as string);
   // 记录是否聚焦
   const [focused, setFocused] = useState(false);
-
   // 显示下拉选项
   const [showDropdown, setShowDropdown] = useState(false);
   // 数据加载时的状态
@@ -44,6 +43,9 @@ const AutoComplete: FC<AutoCompleteProps> = ({
     if (debouncedValue && focused && triggerSearch.current) {
       setOptions([]);
       const result = onSearch(debouncedValue);
+      /** 
+       * 异步加载数据，会有loading效果。
+      */
       if (result instanceof Promise) {
         setIsLoading(true);
         result.then((data) => {
@@ -64,6 +66,7 @@ const AutoComplete: FC<AutoCompleteProps> = ({
     } else {
       setShowDropdown(false);
     }
+    // 取消高亮
     setHighlightIndex(-1);
   }, [debouncedValue, onSearch, focused]);
 

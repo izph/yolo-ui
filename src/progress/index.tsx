@@ -17,10 +17,10 @@ const Progress: FC<ProgressProps> = ({
   ...restProps
 }) => {
   return (
-    <div className="yolo-progress-bar" style={style} {...restProps}>
+    <div className="yolo-progress" style={style} {...restProps}>
       {/* 灰色最外层 */}
-      <div className="yolo-progress-bar-outer" style={{ height: `${strokeHeight}px` }}>
-        <div className={`yolo-progress-bar-inner color-${theme}`} style={{ width: `${percent}%` }}>
+      <div className="yolo-progress-outer" style={{ height: `${strokeHeight}px` }}>
+        <div className={`yolo-progress-inner color-${theme}`} style={{ width: `${percent}%` }}>
           {showText && <span className="inner-text">{`${percent}%`}</span>}
         </div>
       </div>
