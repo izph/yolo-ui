@@ -12,7 +12,7 @@ nav:
 ### 何时使用
 
 - 弹出一个下拉菜单给用户选择操作，用于代替原生的选择器，或者需要一个更优雅的多选器时。
-- 当选项少时（少于 5 项），建议直接将选项平铺，使用 Radio 是更好的选择。
+- 当选项多于8项时，选择列表将出现滚动条。
 
 ### 基本使用
 
@@ -30,19 +30,38 @@ export default () => {
   };
 
   return (
-    <Select
-      placeholder="请选择"
-      onChange={handleChange}
-      onVisibleChange={handleVisibleChange}
-      // defaultValue={"item1"}
-      style={{width: 200}}
-    >
-      <Select.Option value="item1" />
-      <Select.Option value="item2" />
-      <Select.Option value="item3" />
-      <Select.Option value="item4" disabled />
-      <Select.Option value="item5" />
-    </Select>
+    <div>
+      <div>
+        <Select
+        placeholder="请选择"
+        onChange={handleChange}
+        onVisibleChange={handleVisibleChange}
+        // defaultValue={"item1"}
+        style={{width: 200}}
+        >
+          <Select.Option value="a11" />
+          <Select.Option value="b12" />
+          <Select.Option value="c13" />
+          <Select.Option value="d14"/>
+          <Select.Option value="e15" />
+        </Select>
+      </div>
+      <div>
+        <Select
+        placeholder="disabled"
+        onChange={handleChange}
+        onVisibleChange={handleVisibleChange}
+        defaultValue={"a11"}
+        style={{width: 200}}
+        >
+          <Select.Option value="a11" />
+          <Select.Option value="b12" disabled/>
+          <Select.Option value="c13" />
+          <Select.Option value="d14" disabled/>
+          <Select.Option value="e15" />
+        </Select>
+      </div>
+    </div>
   );
 };
 ```
@@ -54,6 +73,7 @@ export default () => {
 ```tsx
 import React from 'react';
 import { Select } from 'yolo-ui';
+const Option = Select.Option;
 
 export default () => {
   const handleChange = (selectedValue: string, selectedValues: string[]) => {
@@ -64,29 +84,19 @@ export default () => {
     console.log('visible', visible);
   };
 
+  const children = [];
+  for (let i = 10; i < 24; i++) {
+    children.push(<Option key={i} value={i.toString(36) + i}>{i.toString(36) + i}</Option>);
+  }
+
   return (
     <Select
       placeholder="多选"
       onChange={handleChange}
       onVisibleChange={handleVisibleChange}
       multiple
-      defaultValue={'item1'}
     >
-      <Select.Option value="item1" />
-      <Select.Option value="item2" />
-      <Select.Option value="item3" />
-      <Select.Option value="item4" disabled />
-      <Select.Option value="item5" />
-<Select.Option value="item1" />
-      <Select.Option value="item2" />
-      <Select.Option value="item3" />
-      <Select.Option value="item4" disabled />
-      <Select.Option value="item5" />
-<Select.Option value="item1" />
-      <Select.Option value="item2" />
-      <Select.Option value="item3" />
-      <Select.Option value="item4" disabled />
-      <Select.Option value="item5" />
+      {children}
     </Select>
   );
 };
@@ -101,9 +111,9 @@ import { Select } from 'yolo-ui';
 export default () => (
   <div>
     <Select placeholder="禁用" disabled>
-      <Select.Option value="item1" />
-      <Select.Option value="item2" />
-      <Select.Option value="item3" />
+      <Select.Option value="1" />
+      <Select.Option value="2" />
+      <Select.Option value="3" />
     </Select>
   </div>
 );

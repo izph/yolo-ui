@@ -4,7 +4,7 @@ import { AlertProps } from './interface';
 import CloseOutlined from '@ant-design/icons/CloseOutlined';
 import Transition from '../transition';
 
-const Alert: FC<AlertProps> = ({ type, description, message, closable, onClose }) => {
+const Alert: FC<AlertProps> = ({ type, description, message, closable, style, onClose }) => {
   const [closed, setClosed] = useState(false);
 
   const handleClose = (e: React.MouseEvent<HTMLElement, MouseEvent>) => {
@@ -18,7 +18,7 @@ const Alert: FC<AlertProps> = ({ type, description, message, closable, onClose }
 
   return (
     <Transition in={!closed} timeout={300} animation="zoom-in-left">
-      <div className={classes}>
+      <div className={classes} style={style}>
         <span className={'yolo-alert-message'}>{message}</span>
         {description && <p className="yolo-alert-desc">{description}</p>}
         {closable && (

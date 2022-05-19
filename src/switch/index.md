@@ -7,7 +7,6 @@ nav:
   title: 组件
   path: /components
 ---
-
 # Switch 开关
 
 开关选择器。
@@ -15,8 +14,7 @@ nav:
 ## 何时使用
 
 - 需要表示开关状态/两种状态之间的切换时；
-
-- 和`checkbox`的区别是，切换`switch`会直接触发状态改变，而`checkbox`一般用于状态标记，需要和提交操作配合。
+- 和 `checkbox`的区别是，切换 `switch`会直接触发状态改变，而 `checkbox`一般用于状态标记，需要和提交操作配合。
 
 ## 基本使用
 
@@ -30,7 +28,7 @@ export default () => {
       <Switch checked />
       <br />
       <br />
-      <Switch />
+      <Switch/>
     </>
   );
 };
@@ -63,19 +61,19 @@ import { Switch } from 'yolo-ui';
 export default () => {
   return (
     <>
-      <Switch theme={'green'} checked />
+      <Switch checked style={{ backgroundColor: 'green'}}/>
       <br />
       <br />
-      <Switch theme={'red'} checked />
+      <Switch  checked style={{backgroundColor: 'red'}}/>
       <br />
       <br />
-      <Switch theme={'yellow'} checked />
+      <Switch  checked style={{backgroundColor: 'yellow'}}/>
       <br />
       <br />
-      <Switch theme={'pink'} checked />
+      <Switch  checked style={{backgroundColor: 'pink'}}/>
       <br />
       <br />
-      <Switch theme={'bule'} checked />
+      <Switch  checked style={{backgroundColor: 'blue'}}/>
     </>
   );
 };
@@ -123,12 +121,12 @@ export default () => {
 
 ## API
 
-| 参数     | 说明                 | 类型                                       | 默认值  |
-| -------- | -------------------- | ------------------------------------------ | ------- |
-| theme    | 开关主题颜色         | `string`                                   | `#09f`  |
+| 参数     | 说明                 | 类型                                         | 默认值    |
+| -------- | -------------------- | -------------------------------------------- | --------- |
+| style   | 自定义样式，`backgroundColor`可自定义颜色| `string`                                   | `#09f`  |
 | checked  | 是否被选中           | `boolean`                                  | `false` |
-| size     | 开关大学             | `default \| sm`                            | -       |
+| size     | 开关大学             | `default \| sm`                             | -         |
 | disabled | 是否被禁用           | `boolean`                                  | `false` |
-| onText   | 开启状态的文本       | `string \| ReactNode`                      | -       |
-| offText  | 关闭状态的文本       | `string \| ReactNode`                      | -       |
-| onChange | 选中值发生变化时触发 | `function(checked: boolean, event: Event)` | -       |
+| onText   | 开启状态的文本       | `string \| ReactNode`                       | -         |
+| offText  | 关闭状态的文本       | `string \| ReactNode`                       | -         |
+| onChange | 选中值发生变化时触发 | `function(checked: boolean, event: Event)` | -         |

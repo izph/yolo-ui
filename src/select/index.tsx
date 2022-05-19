@@ -54,50 +54,9 @@ export const RootSelect: FC<SelectProps> = (props) => {
   /* input的值 */
   const [value, setValue] = useState<string>(typeof defaultValue === 'string' ? defaultValue : '');
 
-
-  /** 
-   * 点击options触发的回调
-  */
-  const handleOptionClick = (currSelectedValue: string, isSelected?: boolean) => {
-    let updatedValues = [currSelectedValue];
-    if (!multiple) {
-      setMenuOpen(false);
-      setValue(currSelectedValue);
-      if (onVisibleChange) {
-        onVisibleChange(false);
-      }
-    } else {
-      // 多选模式
-      setValue('');
-      // 如果当前点击的选项已被选中，则去除选中状态；如果之前未被选中，则设为选中状态
-      updatedValues = isSelected
-        ? selectedValues.filter((v) => v !== currSelectedValue)
-        : [...selectedValues, currSelectedValue];
-      setSelectedValues(updatedValues);
-    }
-
-    onChange && onChange(currSelectedValue, updatedValues);
-    // if (onChange) {
-    //   onChange(currSelectedValue, updatedValues);
-    // }
-  };
-
-  /* input的值发生改变 */
-  const handleInputValueChange = (e: ChangeEvent<HTMLInputElement>) => {
-    const newValue = e.target.value.trim();
-    if (multiple) return;
-    // setValue(newValue);
-  };
-
-  const handleFocus = (e: React.FocusEvent<HTMLInputElement>) => {
-    if (inputRef.current) {
-      inputRef.current.readOnly = true;
-    }
-  }
-
   /**  
-    * 作用：初始化可选的item选项
-    * children是Select.Option，children是不变的
+   * 作用：初始化可选的item选项
+   * children是Select.Option，children是不变的
   */
   useEffect(() => {
     const tempArr: string[] = [];
@@ -136,8 +95,11 @@ export const RootSelect: FC<SelectProps> = (props) => {
         inputRef.current.placeholder = placeholder;
       }
     }
-  }, [selectedValues, multiple, placeholder]);
+  }, [selectedValues]);
 
+  /** 
+   * 设置已选项的容器总宽度
+  */
   useEffect(() => {
     if (containerRef.current) {
       /**
@@ -169,6 +131,44 @@ export const RootSelect: FC<SelectProps> = (props) => {
     setMenuOpen(false);
   });
 
+  /** 
+   * 点击options触发的回调
+  */
+  const handleOptionClick = (currSelectedValue: string, isSelected?: boolean) => {
+    let updatedValues = [currSelectedValue];
+    if (!multiple) {
+      setMenuOpen(false);
+      setValue(currSelectedValue);
+      if (onVisibleChange) {
+        onVisibleChange(false);
+      }
+    } else {
+      // 多选模式
+      setValue('');
+      // 如果当前点击的选项已被选中，则去除选中状态；如果之前未被选中，则设为选中状态
+      updatedValues = isSelected
+        ? selectedValues.filter((v) => v !== currSelectedValue)
+        : [...selectedValues, currSelectedValue];
+      setSelectedValues(updatedValues);
+    }
+    onChange && onChange(currSelectedValue, updatedValues);
+  };
+
+  /* input的值发生改变 */
+  const handleInputValueChange = (e: ChangeEvent<HTMLInputElement>) => {
+    const newValue = e.target.value.trim();
+    onChange && onChange(newValue);
+  };
+
+  const handleFocus = (e: React.FocusEvent<HTMLInputElement>) => {
+    if (inputRef.current) {
+      inputRef.current.readOnly = true;
+    }
+  }
+
+  /**  
+   * 传递给Option的数据
+  */
   const passedContext: ISelectContext = {
     onSelect: handleOptionClick,
     selectedValues,
@@ -207,7 +207,7 @@ export const RootSelect: FC<SelectProps> = (props) => {
   });
 
   return (
-    <div className={containerClass} ref={containerRef} style={style}>
+    <div className={containerClass} ref={containerRef} style={style} {...restProps}>
       <div className="yolo-select-input" onClick={handleClick}>
         <Input
           type={"search"}

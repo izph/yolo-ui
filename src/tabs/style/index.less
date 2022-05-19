@@ -7,6 +7,7 @@
     margin-bottom: 0;
     padding-left: 0;
     list-style: none;
+    //下划线 1px solid #dee2e6;
     border-bottom: @nav-tabs-border-width solid @nav-tabs-border-color;
 }
 
@@ -25,7 +26,11 @@
         background-color: transparent;
         border-color: transparent;
         cursor: default;
-        pointer-events: none;
+        // pointer-events: none;
+    }
+
+    &.disabled:hover {
+        cursor: not-allowed;
     }
 
     &.is-active {

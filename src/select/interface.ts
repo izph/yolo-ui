@@ -12,7 +12,7 @@ export interface SelectProps {
   /** 自定义样式 */
   style?: React.CSSProperties;
   /** 选中值发生变化时触发 */
-  onChange?: (selectedValue: string, selectedValues: string[]) => void;
+  onChange?: (selectedValue: string, selectedValues?: string[]) => void;
   /** 下拉框出现/隐藏时触发 */
   onVisibleChange?: (visible: boolean) => void;
 }

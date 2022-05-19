@@ -2,17 +2,14 @@
 @import './mixins.less';
 
 .yolo-switch {
+    display: inline-block;
+    box-sizing: border-box;
     margin: 0;
     padding: 0;
     color: #000000d9;
     font-size: 14px;
-    font-variant: tabular-nums;
-    line-height: 1.5715;
     list-style: none;
-    font-feature-settings: "tnum";
     position: relative;
-    display: inline-block;
-    box-sizing: border-box;
     min-width: 44px;
     height: 22px;
     line-height: 22px;
@@ -22,14 +19,10 @@
     border-radius: 100px;
     cursor: pointer;
     transition: all .2s;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
 
     &.yolo-switch-disabled {
         cursor: not-allowed;
-        opacity: .4;
+        opacity: 0.4;
     }
 
     &.yolo-switch-sm {
@@ -50,6 +43,7 @@
     }
 }
 
+/** 去掉按钮点击时的边框  */
 .yolo-switch:focus {
     outline: 0;
     box-shadow: 0 0 0 2px #0000001a;
@@ -62,17 +56,26 @@
     width: 18px;
     height: 18px;
     transition: all .2s ease-in-out;
-}
 
-.yolo-switch-handle:before {
-    position: absolute;
-    inset: 0;
     background-color: #fff;
     border-radius: 9px;
     box-shadow: 0 2px 4px #00230b33;
     transition: all .2s ease-in-out;
-    content: "";
 }
+
+// .yolo-switch-handle:before {
+//     position: absolute;
+//     /** 
+//       inset: 0;；意思是当前定位元素相对于最近定位的祖先元素的位置 
+//       inset: 100px; 则类似于分别设置 top:100px 和 left:100px
+//     */
+//     inset: 0;
+//     background-color: #fff;
+//     border-radius: 9px;
+//     box-shadow: 0 2px 4px #00230b33;
+//     transition: all .2s ease-in-out;
+//     content: "";
+// }
 
 .yolo-switch-inner {
     display: block;
@@ -82,7 +85,9 @@
     transition: margin .2s;
 }
 
+/* 选中时的样式 */
 .yolo-switch-checked {
+    /* 真实作用：重置background-image */
     background: @primary;
 
     .yolo-switch-handle {
@@ -94,6 +99,6 @@
     }
 }
 
-.yolo-switch-checked:focus {
-    box-shadow: 0 0 0 2px #e6f7ff;
-}
+// .yolo-switch-checked:focus {
+//     box-shadow: 0 0 0 2px #e6f7ff;
+// }

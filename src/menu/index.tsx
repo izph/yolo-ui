@@ -53,8 +53,8 @@ const RootMenu: FC<MenuProps> = ({
     第二个参数是遍历的元素上下文，通过它，我们能够进行定制化的操作。
     当props.children为null和undefined时，最终会原值返回
   */
-  const renderChildren = () =>
-    React.Children.map(children, (child, index) => {
+  const renderChildren = () => {
+    return React.Children.map(children, (child, index) => {
       /* 
         child 是 ReactNode 类型，先断言成 FunctionComponentElement 类型，再拿到 displayName 内置属性
         FunctionComponentElement是函数组件元素，其实就是MenuItem
@@ -88,6 +88,8 @@ const RootMenu: FC<MenuProps> = ({
       // eslint-disable-next-line no-console
       console.error('Warning: Menu has a child which is not a MenuItem component');
     });
+  }
+
 
   return (
     <ul className={classes} style={style}>

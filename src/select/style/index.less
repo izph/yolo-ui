@@ -55,12 +55,47 @@
     left: 0;
     z-index: 100;
     width: 100%;
+    /* 设置最大高度 */
+    max-height: 20rem;
     padding-left: 0;
     white-space: nowrap;
     list-style: none;
     background: @white;
     border: @menu-border-width solid @menu-border-color;
     box-shadow: @submenu-box-shadow;
+    overflow: auto;
+    cursor: pointer;
+    // overflow-y: auto;
+    // overflow-x: hidden;
+
+    /* 滚动轨道 底层*/
+    &::-webkit-scrollbar-track {
+        background-color: rgba(0, 0, 0, 0.1);
+        border-left: 1px solid rgba(0, 0, 0, 0);
+    }
+
+    /* 滚动条宽高 */
+    &::-webkit-scrollbar {
+        width: 10px;
+        -webkit-border-radius: 5px;
+        -moz-border-radius: 5px;
+        border-radius: 5px;
+    }
+
+    /* 滚动条 上层*/
+    &::-webkit-scrollbar-thumb {
+        background-color: #7f7f7f;
+        -webkit-border-radius: 5px;
+        -moz-border-radius: 5px;
+        border-radius: 5px;
+    }
+
+    &::-webkit-scrollbar-thumb:hover {
+        background-color: #272626;
+        -webkit-border-radius: 5px;
+        -moz-border-radius: 5px;
+        border-radius: 5px;
+    }
 
     .yolo-select-item {
         display: flex;
@@ -78,8 +113,14 @@
 
         &.is-disabled {
             color: @menu-item-disabled-color;
-            cursor: default;
-            pointer-events: none;
+            cursor: not-allowed;
+            // pointer-events: none;
+        }
+
+        &.is-disabled:hover {
+            cursor: not-allowed;
+            background-color: #ffffff;
+            // pointer-events: none;
         }
 
         &:hover {
@@ -92,7 +133,7 @@
     position: absolute;
     top: 0;
     left: 0;
-    z-index: 100;
+    z-index: 200;
     display: flex;
     flex-wrap: wrap;
     align-items: center;

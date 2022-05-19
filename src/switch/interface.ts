@@ -5,8 +5,8 @@ export type SwitchChangeEventHandler = (
   event: React.MouseEvent<HTMLButtonElement> | React.KeyboardEvent<HTMLButtonElement>,
 ) => void;
 export interface SwitchProps {
-  /* 主题颜色 */
-  theme?: string;
+  /* 用户自定义样式 */
+  style?: React.CSSProperties;
   /** 是否被选中 */
   checked?: boolean;
   /* 用户自定义类名 */

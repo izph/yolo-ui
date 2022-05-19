@@ -33,6 +33,10 @@ export interface AlertProps {
    */
   className?: string;
   /**
+   * 用户自定义的样式
+   */
+  style?: React.CSSProperties;
+  /**
    * 关闭的回调
    */
   onClose?: (e: React.MouseEvent<HTMLElement, MouseEvent>) => void;

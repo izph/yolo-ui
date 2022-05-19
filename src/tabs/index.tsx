@@ -3,24 +3,41 @@ import classNames from 'classnames';
 import TabPane from './tabPane';
 import { TabsProps, TabPaneProps } from './interface';
 
-const RootTab: FC<TabsProps> = ({ className, defaultActiveKey, type, onTabClick, children }) => {
+const RootTab: FC<TabsProps> = ({
+  className,
+  defaultActiveKey,
+  type,
+  onTabClick,
+  children,
+  ...restProps
+}) => {
+  /** 
+   * 当前选择的tabs页签key值
+  */
   const [activeKey, setActiveKey] = useState(defaultActiveKey);
-  const navClass = classNames('yolo-tabs-nav', {
+  const tabsClassName = classNames('yolo-tabs', {
+    [`${className}`]: className
+  })
+  const classes = classNames('yolo-tabs-nav', {
     'nav-line': type === 'line',
     'nav-card': type === 'card',
   });
 
+  /** 
+   * 点击切换tabs页签时的回调
+  */
   const handleClick = (e: MouseEvent, index: number, disabled: boolean | undefined) => {
     if (!disabled) {
       setActiveKey(index);
-      if (onTabClick) {
-        onTabClick(index);
-      }
+      onTabClick && onTabClick(index);
     }
   };
 
-  const renderNavLinks = () =>
-    React.Children.map(children, (child, index) => {
+  /** 
+   * 点击切换tabs页签时的回调
+  */
+  const renderNavLinks = () => {
+    return React.Children.map(children, (child, index) => {
       const childElement = child as FunctionComponentElement<TabPaneProps>;
       const { tab, disabled } = childElement.props;
       const classes = classNames('yolo-tabs-nav-item', {
@@ -41,17 +58,24 @@ const RootTab: FC<TabsProps> = ({ className, defaultActiveKey, type, onTabClick,
         </li>
       );
     });
+  }
 
-  const renderContent = () =>
-    React.Children.map(children, (child, index) => {
+  /** 
+   * 根据activeKey获取对应的内容
+  */
+  const renderContent = () => {
+    return React.Children.map(children, (child, index) => {
       if (index === activeKey) {
         return child;
       }
     });
+  }
 
   return (
-    <div className={`yolo-tabs ${className}`}>
-      <ul className={navClass}>{renderNavLinks()}</ul>
+    <div className={tabsClassName} {...restProps}>
+      {/* tabs的导航栏 */}
+      <ul className={classes}>{renderNavLinks()}</ul>
+      {/* tabs的内容区域 */}
       <div className="yolo-tabs-content">{renderContent()}</div>
     </div>
   );

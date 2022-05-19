@@ -7,10 +7,16 @@ nav:
   title: 组件
   path: /components
 ---
+# Tabs 标签页
+## 何时使用
 
-### 基本
+- 提供平级的区域将大块内容进行收纳和展现，保持界面整洁。
 
-默认选中第一项。
+- 卡片式的页签，提供可关闭的样式，常用于容器顶部。
+
+## 基本使用
+
+默认选中第一项`TabPane`，默认的type是`line`。
 
 ```tsx
 import React from 'react';
@@ -24,7 +30,7 @@ export default () => {
   };
 
   return (
-    <Tabs onTabClick={handleClick}>
+    <Tabs onTabClick={handleClick} className={"tabs-test"}>
       <TabPane tab="Tab 1">Content of Tab Pane 1</TabPane>
       <TabPane tab="Tab 2">Content of Tab Pane 2</TabPane>
       <TabPane tab="Tab 3">Content of Tab Pane 3</TabPane>
@@ -33,7 +39,7 @@ export default () => {
 };
 ```
 
-### 禁用
+## 禁用TabPane
 
 禁用某一项。
 
@@ -54,9 +60,9 @@ export default () => (
 );
 ```
 
-### 卡片式页签
+## 卡片式页签
 
-另一种样式的页签，不提供对应的垂直样式。
+`type`为`card`类型的tabs页签。
 
 ```tsx
 import React from 'react';
@@ -73,9 +79,9 @@ export default () => (
 );
 ```
 
-### API
+## API
 
-#### Tabs
+### Tabs
 
 | 参数 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
@@ -83,7 +89,7 @@ export default () => (
 | type | 页签的基本样式，可选 line、card 类型 | `string ` | `line` |
 | onTabClick | tab 被点击的回调 | `function(key: number)` | - |
 
-#### Tabs.TabPane
+### Tabs.TabPane
 
 | 参数     | 说明             | 类型        | 默认值  |
 | -------- | ---------------- | ----------- | ------- |
