@@ -37,12 +37,20 @@ export default () => {
     return true;
   };
   return (
-    <Upload
+    <div>
+      <Upload
       action="https://www.mocky.io/v2/5cc8019d300000980a055e76"
       //   beforeUpload={checkFileSize}
-    >
-      <Button> Upload File</Button>
-    </Upload>
+      >
+        <Button> Upload File</Button>
+      </Upload>
+      <Upload
+        action="https://www.mocky.io/v2/5cc8019d300000980a055e76"
+        //   beforeUpload={checkFileSize}
+      >
+        Upload File
+      </Upload>
+    </div>
   );
 };
 ```

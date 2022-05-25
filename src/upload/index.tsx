@@ -27,6 +27,7 @@ export const Upload: FC<UploadProps> = (props) => {
   const fileInput = useRef<HTMLInputElement>(null);
   /** 存放文件的数组 */
   const [fileList, setFileList] = useState<UploadFile[]>(defaultFileList || []);
+
   // 更新filelist：更新的文件，文件的属性（可选）
   const updateFileList = (updateFile: UploadFile, updateObj: Partial<UploadFile>) => {
     setFileList((prevList) => {
@@ -40,12 +41,14 @@ export const Upload: FC<UploadProps> = (props) => {
     });
   };
 
+  // 点击上传
   const handleClick = () => {
     if (fileInput.current) {
       // 手动触发input文件的点击事件，上传文件
       fileInput.current.click();
     }
   };
+
   // 文件上传
   const handleFileChange = (e: ChangeEvent<HTMLInputElement>) => {
     const files = e.target.files;
@@ -67,6 +70,7 @@ export const Upload: FC<UploadProps> = (props) => {
       onRemove(file);
     }
   };
+
   const uploadFiles = (files: FileList) => {
     let postFiles = Array.from(files);
     postFiles.forEach((file) => {
@@ -156,7 +160,7 @@ export const Upload: FC<UploadProps> = (props) => {
   };
 
   return (
-    <div className="yolo-upload-component">
+    <div className="yolo-upload">
       <div className="yolo-upload-input" style={{ display: 'inline-block' }} onClick={handleClick}>
         {drag ? (
           <Dragger

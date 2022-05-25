@@ -4,6 +4,11 @@ import Icon from '../icon/index';
 import Progress from '../progress/index';
 import { UploadListProps } from './interface';
 
+/** 
+ * 展示上传的文件
+ * fileList：文件列表
+ * onRemove：删除文件执行的回调
+*/
 export const UploadList: FC<UploadListProps> = (props) => {
   const { fileList, onRemove } = props;
 

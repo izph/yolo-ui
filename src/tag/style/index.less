@@ -1,4 +1,3 @@
-@import '../../style/theme/global.less';
 @import './mixins.less';
 
 .yolo-tag {
@@ -27,17 +26,15 @@
 }
 
 each(@theme-colors, {
-        .tag-@{key} {
-            color: @value;
-            background-color: rgba(@value, .1);
-            border: 1px solid rgba(@value, .2);
+    .tag-@{key} {
+        color: @value;
+        background-color: rgba(@value, .1);
+        border: 1px solid rgba(@value, .2);
 
-            .yolo-icon {
-                &:hover {
-                    color: darken(@value, 10%);
-                }
+        .yolo-icon {
+            &:hover {
+                color: darken(@value, 10%);
             }
         }
     }
-
-)
+})

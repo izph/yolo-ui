@@ -6,6 +6,7 @@ export interface TabsProps {
   /** 默认显示的tab页 */
   defaultActiveKey?: number;
   type?: TabsType;
+  /** 点击tab页时的回调 */
   onTabClick?: (selectedKey: number) => void;
 }
 
