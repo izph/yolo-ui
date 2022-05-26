@@ -1,5 +1,5 @@
 <p align="center">
-  <a href="http://47.93.96.90">
+  <a href="http://yolo-ui.xyz">
     <img src="https://img.icons8.com/nolan/80/yolo.png"/>
   </a>
 </p>
@@ -18,14 +18,10 @@ Yolo UI，是一款基于 Dumi，由 React + TypeScript + Less 开发的UI组件
 
 ## 安装
 
-使用 npm 或 yarn 安装
+使用 npm
 
 ```bash
 npm install yolo-ui
-```
-
-```bash
-yarn add yolo-ui
 ```
 
 ## 示例代码

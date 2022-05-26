@@ -14,14 +14,10 @@ nav:
 
 ### 安装
 
-使用 npm 或 yarn 安装
+使用 npm 安装
 
 ```bash
 npm install yolo-ui
-```
-
-```bash
-yarn add yolo-ui
 ```
 
 ### 示例代码
@@ -61,4 +57,4 @@ import "yolo-ui/dist/index.css";
 技术社区名字：iZph
 
 - [Github](https://github.com/izph)
-- [个人博客](https://izph.github.io/blog/)
+- [个人博客](http://blog.yolo-ui.xyz)

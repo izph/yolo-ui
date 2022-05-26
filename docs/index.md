@@ -22,4 +22,4 @@ footer: Yolo UI MIT Licensed | Copyright © 2022<br />Powered by [dumi](https://
 ## 我的技术社区
 
 - [Github](https://github.com/izph)
-- [个人博客](https://izph.github.io/blog/)
+- [个人博客](http://blog.yolo-ui.xyz)
